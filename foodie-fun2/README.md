@@ -3,6 +3,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 installed react-router-dom
 installed axios
 installed material-ui/core
+installed react-hook-form
+installed yup
 
 
 ## Available Scripts
