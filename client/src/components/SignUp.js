@@ -7,14 +7,14 @@ import Signup from '../images/Signup.png';
 const StyledSignUp = styled.div`
 margin-top: 8%;
   height: 80vh;
-  color: #e76e3c;
+  color: #e8964a;
   display: block;
   width: 80%;
   margin: 2rem auto;
 
 form {
     width: 70%;	    
-    margin: 15% auto 2% auto;	    
+    margin: 1% auto 2% auto;	    
     padding: 3rem 1rem;	      
     border-radius: 5rem;	     
 
@@ -39,7 +39,7 @@ form {
         width: 80%;
         display: block;
         margin: 1rem auto 2rem auto;
-        padding: 0.5rem 0;
+        padding: 0.8rem 0;
       }
 
       label {
@@ -51,15 +51,17 @@ form {
       button {
         width: 50%;
         padding: 1rem;
-        background-color: #e76e3c;
+        background-color: #c45228;
         border-radius:5px;
         color: white;
+        font-weight:bold;
         border: 1px solid #e76e3c;
   
         &:hover{
-          background-color: white;
+          background-color: #e8964a;
           border: 1px solid #e76e3c;
-          color: #e76e3c;
+          color: #181212;
+          font-weight:bold;
         }
       }
     }
@@ -72,11 +74,12 @@ form {
       }
     
       a {
-        color: #e76e3c;
+        color: #e8964a;
         text-decoration: none;
     
         &: hover {
           text-decoration: underline;
+
         }
       }
 
