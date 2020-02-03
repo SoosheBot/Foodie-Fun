@@ -4,9 +4,9 @@ import { axiosWithAuth } from '../utils/axiosWithAuth'
 //Name, ID, Cuisine, Menu item name, price, rating of menu item, short review of menu item.
 
 import styled from "styled-components";
-import Signup from '../images/Signup.png';
+import LogIn from '../images/LogIn.png';
 
-const StyledAddRestaurant = styled.div`
+const StyledAddReview = styled.div`
 margin-top: 8%;
   height: 80vh;
   color: #e8964a;
@@ -21,7 +21,7 @@ form {
     border-radius: 5rem;	     
 
     ::before {
-        background-image: url(${Signup});
+        background-image: url(${LogIn});
         background-size: cover;
         content: "";
         display: block;
@@ -87,16 +87,16 @@ form {
 
 `;
 
-const AddRestaurant = props => {
-  const [restaurants, setRestaurants] = useState({
-    restaurantName: "",
-    cuisine: "",
-    address: "",
-    hours: ""
+const AddReview = props => {
+  const [review, setReview] = useState({
+    menuItem: "",
+    price: "",
+    rating: "",
+    reviewDesc: ""
   });
 
   const handleChange = e => {
-    setRestaurants({ ...restaurants, [e.target.name]: e.target.value });
+    setReview({ ...review, [e.target.name]: e.target.value });
   };
 
   const submitForm = e => {
@@ -108,48 +108,48 @@ const AddRestaurant = props => {
         props.history.push("/protected");
       })
       .catch(err => {
-        console.log("add Restaurant error", err);
+        console.log("add Review error", err);
       });
   };
 
   return (
-    <StyledAddRestaurant>
-    <div className="addRestaurant-form">
-         <h1>Add a new Restaurant</h1>
+    <StyledAddReview>
+    <div className="addReview-form">
+         <h1>Add a new Review</h1>
         <form onSubmit={submitForm}>
           <input
             type="text"
-            className="Restaurantname"
-            placeholder="Enter Restaurant name..."
-            value={restaurants.restaurantName}
+            className="MenuName"
+            placeholder="Enter Menu item name..."
+            value={review.menuItem}
+            onChange={handleChange}
+          />
+          <input
+            type="number"
+            className="enter price"
+            placeholder="Enter price..."
+            value={review.price}
+            onChange={handleChange}
+          />
+          <input
+            type="number"
+            className="rating"
+            placeholder="Enter rating..."
+            value={review.rating}
             onChange={handleChange}
           />
           <input
             type="text"
-            className="cuisine"
-            placeholder="Enter cuisine..."
-            value={restaurants.cuisine}
+            className="reviewDescription"
+            placeholder="Enter a short review..."
+            value={review.reviewDesc}
             onChange={handleChange}
           />
-          <input
-            type="text"
-            className="address"
-            placeholder="Enter address..."
-            value={restaurants.address}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            className="hours"
-            placeholder="Enter hours..."
-            value={restaurants.hours}
-            onChange={handleChange}
-          />
-          <button type="submit">Add Restaurant</button>
+          <button type="submit">Add Review</button>
         </form>
     </div>
-    </StyledAddRestaurant>
+    </StyledAddReview>
   );
 };
 
-export default AddRestaurant;
+export default AddReview;
