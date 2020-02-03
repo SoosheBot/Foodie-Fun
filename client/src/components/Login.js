@@ -39,6 +39,7 @@ const Login = (props) => {
                 value={credentials.password}
                 onChange={handleChange} 
                 />
+                <button type='submit'>Login</button>
             </form>
         </div>
     );
