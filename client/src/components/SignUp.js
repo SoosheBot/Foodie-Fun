@@ -18,27 +18,31 @@ const StyledSignUp = styled.div`
   // height: 100%;
   // z-index: -2;
 
- 
-  nav{
+  nav {
     display: flex;
     justify-content: flex-end;
-    align-items: center;        
+    align-items: center;
 
-   a{
-        width:10%;
-        padding: 2%;
-        text-decoration: none;
-        font-size: 1.8vw;
-        font-weight:bold;
-        text-align: center;
-        &:hover{
-            color: #c45228;
-        }
-        @media(max-width: 500px){font-size: 0.5rem; display:flex; flex-direction:column;}
-        @media(max-width:825px){font-size: 1rem;}
-    } 
-} 
-  
+    a {
+      width: 10%;
+      padding: 2%;
+      text-decoration: none;
+      font-size: 1.8vw;
+      font-weight: bold;
+      text-align: center;
+      &:hover {
+        color: #c45228;
+      }
+      @media (max-width: 500px) {
+        font-size: 0.5rem;
+        display: flex;
+        flex-direction: column;
+      }
+      @media (max-width: 825px) {
+        font-size: 1rem;
+      }
+    }
+  }
 
   form {
     width: 70%;
@@ -46,7 +50,6 @@ const StyledSignUp = styled.div`
     padding: 3rem 1rem;
     border-radius: 5rem;
 
-  
     input[name="email"],
     input[name="username"],
     input[name="password"],
@@ -98,8 +101,8 @@ const StyledSignUp = styled.div`
 
   h4 {
     color: #181212;
-    font-weight:bold;
-    font-size:1.4rem;
+    font-weight: bold;
+    font-size: 1.4rem;
     text-shadow: 1px 1px #181212;
   }
 
@@ -151,8 +154,8 @@ const SignUp = props => {
         >
           Home
         </a>
-        <Link to='/dashboard'>My Account</Link>
-        <Link to="./login">Log In</Link>
+        <Link to="/dashboard">My Account</Link>
+        <Link to="/login">Log In</Link>
       </nav>
       <div className="signup-form">
         <form onSubmit={handleSubmit(submitForm)}>

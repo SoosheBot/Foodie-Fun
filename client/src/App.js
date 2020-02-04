@@ -12,13 +12,12 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">  
+    <div className="App">
       <Router>
         <Switch>
-          <Route path="/" component={SignUp} />
-          <Route path="/login" component={Login} />
-          <Route component={Login} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <Route exact path="/login" component={Login} />
+          <Route path="/" component={SignUp} />
         </Switch>
       </Router>
     </div>
@@ -26,7 +25,6 @@ function App() {
 }
 
 export default App;
-
 
 // CODE TO BE IMPLEMENTED LATER -- DO NOT DELETE
 // function App() {
@@ -43,4 +41,3 @@ export default App;
 //     </div>
 //   );
 // }
-
