@@ -55,8 +55,8 @@ form {
       }
 
       button {
-        width: 50%;
-        padding: 1rem;
+        width: 80%;
+        padding: .5rem 1rem;
         background-color: #c45228;
         border-radius:5px;
         color: white;
@@ -93,31 +93,38 @@ form {
   
   return (
     <StyledAddReview>
+        <h1>Add a new Review</h1>
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
       type="text" 
       placeholder="Add menu item" 
-      name="Add menu item" 
+      name="add_menu_item" 
       ref={register({required: true, maxLength: 20})} 
       />
+      {errors.add_menu_item && 'Menu item is required'}
       <input 
       type="number" 
       placeholder="Price"
-      name="Price" 
+      name="price" 
       ref={register({required: true, max: 100, min: 0, maxLength: 5})} 
       />
-      <select 
+      {errors.price && 'Price is required'}
+      <input 
+      type='number'
+      placeholder='put your rating here...'
       name="rating" 
-      ref={register({ required: true })}>
-        <option value="1">1 star</option>
-        <option value=" 2"> 2 stars</option>
-        <option value=" 3"> 3 stars</option>
-        <option value=" 4"> 4 stars</option>
-        <option value=" 5"> 5 stars</option>
-      </select>
-      <textarea name="Review Description" ref={register} />
-
+      ref={register({required: true, max: 5, min: 1, pattern: /^\S+@\S+$/i})}/>
+      {errors.rating && 'a Rating is required'}
+      <input
+      type='text'
+      name="review_description" 
+      placeholder='Provide a short review here...'
+      ref={register({required: true, minLength: 10, maxLength: 500})}
+      />
+      {errors.review_description && 'a Review is required'}
+      <button>
       <input type="submit" />
+      </button>  
     </form>
     </StyledAddReview>  
   );
