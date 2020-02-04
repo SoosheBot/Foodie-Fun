@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-// import PrivateRoute from "./utils/PrivateRoute";
+import PrivateRoute from "./utils/PrivateRoute";
 
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
+import Dashboard from "./components/Dashboard";
 // import AddRestaurant from './components/AddRestaurant';
 
 import "./App.css";
@@ -19,7 +20,7 @@ function App() {
           {/* <Route path='/add-restaurant' component={AddRestaurant} /> */}
           <Route path="/" component={SignUp} />
           <Route path="/login" component={Login} />
-          {/* <PrivateRoute path="/homepage" component={Homepage} /> */}
+          <PrivateRoute path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
     </div>

@@ -124,13 +124,13 @@ const StyledSignUp = styled.div`
 `;
 
 const SignUp = props => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
-  console.log("signup form firing", watch("email"));
+  // console.log("signup form firing", watch("email"));
 
   const submitForm = data => {
     axiosWithAuth()
-      .post("/register", data)
+      .post("/api/auth/register", data)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         props.history.push("/login");
@@ -144,13 +144,14 @@ const SignUp = props => {
     <StyledSignUp>
       <nav>
         <a
-          href="#"
+          href="https://www.google.com/"
           target="_blank"
           rel="noopener noreferrer"
           alt="Homepage"
         >
           Home
         </a>
+        <Link to='/dashboard'>My Account</Link>
         <Link to="/login">Log In</Link>
       </nav>
       <div className="signup-form">
@@ -161,7 +162,7 @@ const SignUp = props => {
             type="text"
             name="email"
             placeholder="Enter an email..."
-            ref={register({ required: true, maxLength: 10 })}
+            ref={register({ required: true, maxLength: 30 })}
           />
           {errors.email && <p>Email is required!</p>}
 
@@ -183,23 +184,14 @@ const SignUp = props => {
           />
           {errors.password && <p>Password is required!</p>}
 
-          <h2>Confirm Password</h2>
-          <input
-            type="text"
-            name="confirm"
-            placeholder="Enter password again..."
-            ref={register({ required: true, maxLength: 10 })}
-          />
-          {errors.email && <p>Your passwords must match!</p>}
-
-          <h2>Location</h2>
+          <h2>Location (City)</h2>
           <input
             type="text"
             name="location"
             placeholder="Enter your location..."
-            ref={register({ required: true, maxLength: 5 })}
+            ref={register({ required: true, maxLength: 15 })}
           />
-          {errors.location && <p>Your five-digit zipcode is required!</p>}
+          {errors.location && <p>Please enter your city!</p>}
 
           <br />
           <input className="submit" type="submit" />

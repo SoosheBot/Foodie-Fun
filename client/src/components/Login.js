@@ -1,8 +1,9 @@
 import React from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+
 import { useForm } from "react-hook-form";
 import { Link } from 'react-router-dom';
 
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
 import LogIn from "../images/LogIn.png";
 
@@ -130,14 +131,14 @@ const StyledLogIn = styled.div`
 `;
 
 const Login = props => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit, errors } = useForm();
 
-  console.log('username is =', watch('username'));
-  console.log('password is =', watch('password'));
+  // console.log('username is =', watch('username'));
+  // console.log('password is =', watch('password'));
 
   const submitForm = data => {
     axiosWithAuth()
-      .post("", data)
+      .post("/api/auth/login", data)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         localStorage.setItem('userid', res.data.id);
@@ -152,7 +153,7 @@ const Login = props => {
     <StyledLogIn>
       <nav>
         <a
-          href="#"
+          href="https://www.google.com/"
           target="_blank"
           rel="noopener noreferrer"
           alt="Homepage"
