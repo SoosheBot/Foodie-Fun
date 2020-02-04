@@ -8,12 +8,15 @@ import styled from "styled-components";
 import Signup from "../images/Signup.png";
 
 const StyledSignUp = styled.div`
-margin-top: 8%;
-height: 80vh;
-color: #e8964a;
-display: block;
-width: 80%;
-margin: 2rem auto;
+  background-image: url(${Signup});
+  background-size: cover;
+  // display: block;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // width: 100%;
+  // height: 100%;
+  // z-index: -2;
 
  
   nav{
@@ -43,20 +46,7 @@ margin: 2rem auto;
     padding: 3rem 1rem;
     border-radius: 5rem;
 
-    ::before {
-      background-image: url(${Signup});
-      background-size: cover;
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      // opacity: 0.8;
-    }
-
+  
     input[name="email"],
     input[name="username"],
     input[name="password"],
