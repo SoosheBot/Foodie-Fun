@@ -14,6 +14,26 @@ const StyledLogIn = styled.div`
   width: 80%;
   margin: 2rem auto;
 
+  nav{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;        
+
+   a{
+        width:10%;
+        padding: 2%;
+        text-decoration: none;
+        font-size: 1.8vw;
+        font-weight:bold;
+        text-align: center;
+        &:hover{
+            color: #c45228;
+        }
+        @media(max-width: 500px){font-size: 0.5rem; display:flex; flex-direction:column;}
+        @media(max-width:825px){font-size: 1rem;}
+    } 
+} 
+
   form {
     width: 70%;
     margin: 1% auto 2% auto;
@@ -81,7 +101,8 @@ const StyledLogIn = styled.div`
 
   p {
     color: black;
-    background-color: white;
+    font-weight:bold;
+    // background-color: white;
     width: 50%;
     margin: 0 auto;
     padding: 1rem;
@@ -89,9 +110,11 @@ const StyledLogIn = styled.div`
 
   a {
     color: #e8964a;
+    font-size:1.2rem;
     text-decoration: none;
 
     &: hover {
+      color: #c45228;
       text-decoration: underline;
     }
   }
@@ -118,6 +141,17 @@ const Login = props => {
 
   return (
     <StyledLogIn>
+      <nav>
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          alt="Homepage"
+        >
+          Home
+        </a>
+        <Link to="/signup">Sign Up</Link>
+      </nav>
       <div className="login-form">
         <h1>Welcome! Log In to Your Foodie App!</h1>
         <form onSubmit={handleSubmit(submitForm)}>

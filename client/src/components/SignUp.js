@@ -8,24 +8,33 @@ import styled from "styled-components";
 import Signup from "../images/Signup.png";
 
 const StyledSignUp = styled.div`
-  margin-top: 8%;
-  height: 100%;
-  color: #e8964a;
-  display: block;
-  width: 80%;
-  margin: 2rem auto;
+margin-top: 8%;
+height: 80vh;
+color: #e8964a;
+display: block;
+width: 80%;
+margin: 2rem auto;
 
-  background-image: url(${Signup});
-      background-size: cover;
-      content: "";
-      display: block;
-      // position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      opacity: 0.8;
+ 
+  nav{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;        
+
+   a{
+        width:10%;
+        padding: 2%;
+        text-decoration: none;
+        font-size: 1.8vw;
+        font-weight:bold;
+        text-align: center;
+        &:hover{
+            color: #c45228;
+        }
+        @media(max-width: 500px){font-size: 0.5rem; display:flex; flex-direction:column;}
+        @media(max-width:825px){font-size: 1rem;}
+    } 
+} 
   
 
   form {
@@ -34,19 +43,19 @@ const StyledSignUp = styled.div`
     padding: 3rem 1rem;
     border-radius: 5rem;
 
-    // ::before {
-    //   background-image: url(${Signup});
-    //   background-size: cover;
-    //   content: "";
-    //   display: block;
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   width: 100%;
-    //   height: 100%;
-    //   z-index: -2;
-    //   opacity: 0.8;
-    // }
+    ::before {
+      background-image: url(${Signup});
+      background-size: cover;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.8;
+    }
 
     input[name="email"],
     input[name="username"],
@@ -139,9 +148,20 @@ const SignUp = props => {
 
   return (
     <StyledSignUp>
+      <nav>
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          alt="Homepage"
+        >
+          Home
+        </a>
+        <Link to="/login">Log In</Link>
+      </nav>
       <div className="signup-form">
         <form onSubmit={handleSubmit(submitForm)}>
-        <h1>Sign Up for Foodie Fun</h1>
+          <h1>Sign Up for Foodie Fun</h1>
           <h2>Enter an Email</h2>
           <input
             type="text"
@@ -190,10 +210,10 @@ const SignUp = props => {
           <br />
           <input className="submit" type="submit" />
 
-          <h5>
+          <h4>
             Aleady have an account? <br />
             <Link to="/login">Log in here!</Link>{" "}
-          </h5>
+          </h4>
         </form>
       </div>
     </StyledSignUp>
