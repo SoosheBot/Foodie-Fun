@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 import styled from "styled-components";
@@ -103,7 +104,7 @@ const SignUp = props => {
       .post()
       .then(res => {
         localStorage.setItem("token", res.data.payload);
-        props.history.push("/protected");
+        props.history.push("/login");
       })
       .catch(err => {
         console.log("signup error", err);
