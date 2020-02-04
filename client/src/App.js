@@ -12,10 +12,12 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
+      
       <Router>
+      
         <Switch>
           {/* <Route path='/add-restaurant' component={AddRestaurant} /> */}
-          <Route path="/signup" component={SignUp} />
+          <Route path="/" component={SignUp} />
           <Route path="/login" component={Login} />
           {/* <PrivateRoute path="/homepage" component={Homepage} /> */}
         </Switch>

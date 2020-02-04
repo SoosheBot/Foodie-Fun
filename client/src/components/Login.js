@@ -23,6 +23,7 @@ const StyledLogIn = styled.div`
         width:10%;
         padding: 2%;
         text-decoration: none;
+        text-shadow: 1px 2px #181212;
         font-size: 1.8vw;
         font-weight:bold;
         text-align: center;
@@ -120,6 +121,7 @@ const StyledLogIn = styled.div`
   a {
     color: #e8964a;
     text-decoration: none;
+    text-shadow: 1px 2px #181212;
     &: hover {
       text-decoration: underline;
       color: #c45228;
@@ -181,7 +183,7 @@ const Login = props => {
           <input className="submit" type="submit" />
           <h4>
             Need an account? <br />
-            <Link to="/signup">Sign Up Here!</Link>{" "}
+            <Link to="/">Sign Up Here!</Link>{" "}
           </h4>
         </form>
       </div>
