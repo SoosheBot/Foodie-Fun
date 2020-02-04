@@ -54,7 +54,7 @@ margin: 2rem auto;
       width: 100%;
       height: 100%;
       z-index: -2;
-      opacity: 0.8;
+      // opacity: 0.8;
     }
 
     input[name="email"],
@@ -90,7 +90,7 @@ margin: 2rem auto;
         background-color: #e8964a;
         border: 1px solid #e76e3c;
         color: #181212;
-        text-shadow: 1px 2px white;
+        text-shadow: 1px 2px #181212;
       }
     }
   }
@@ -101,16 +101,20 @@ margin: 2rem auto;
   }
 
   h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h3 {
     color: #c45228;
     text-shadow: 1px 2px #181212;
   }
 
+  h4 {
+    color: #181212;
+    font-weight:bold;
+    font-size:1.4rem;
+    text-shadow: 1px 1px #181212;
+  }
+
   p {
-    color: black;
+    color: #181212;
     // background-color: white;
     color: #c45228;
     text-shadow: 1px 2px #181212;
@@ -212,7 +216,7 @@ const SignUp = props => {
 
           <h4>
             Aleady have an account? <br />
-            <Link to="/login">Log in here!</Link>{" "}
+            <Link to="/login">Log in here.</Link>{" "}
           </h4>
         </form>
       </div>

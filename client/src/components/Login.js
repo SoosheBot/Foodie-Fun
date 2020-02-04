@@ -51,7 +51,7 @@ const StyledLogIn = styled.div`
       width: 100%;
       height: 100%;
       z-index: -2;
-      opacity: 0.8;
+      // opacity: 0.8;
     }
 
     input[name="username"],
@@ -94,28 +94,35 @@ const StyledLogIn = styled.div`
     text-shadow: 1px 2px #181212;
   }
 
-  h2 {
+  h2,
+  h3 {
     color: #c45228;
     text-shadow: 1px 2px #181212;
   }
 
-  p {
-    color: black;
+  h4 {
+    color: #c45228;
     font-weight:bold;
+    font-size:1.4rem;
+    text-shadow: 1px 1px #181212;
+  }
+
+  p {
+    color: #181212;
     // background-color: white;
-    width: 50%;
+    color: #c45228;
+    text-shadow: 1px 2px #181212;
+    // width: 50%;
     margin: 0 auto;
-    padding: 1rem;
+    // padding: 1rem;
   }
 
   a {
     color: #e8964a;
-    font-size:1.2rem;
     text-decoration: none;
-
     &: hover {
-      color: #c45228;
       text-decoration: underline;
+      color: #c45228;
     }
   }
 `;
@@ -172,10 +179,10 @@ const Login = props => {
           />
           {errors.password && <p>ERROR! This field is required!</p>}
           <input className="submit" type="submit" />
-          <p>
+          <h4>
             Need an account? <br />
             <Link to="/signup">Sign Up Here!</Link>{" "}
-          </p>
+          </h4>
         </form>
       </div>
     </StyledLogIn>
