@@ -20,4 +20,18 @@ export default App;
 
 
 // CODE TO BE IMPLEMENTED LATER -- DO NOT DELETE
+// function App() {
+//   return (
+//     <div className="App">
+//       <Router>
+//         <Switch>
+//           <Route path='/add-restaurant' component={AddRestaurant} />
+//           <Route exact path="/" component={SignUp} />
+//           <Route path="/login" component={Login} />
+//           <PrivateRoute path="/homepage" component={Homepage} />
+//         </Switch>
+//       </Router>
+//     </div>
+//   );
+// }
 

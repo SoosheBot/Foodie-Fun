@@ -1,6 +1,7 @@
 import React from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useForm } from "react-hook-form";
+// import { Link } from 'react-router-dom';
 
 import styled from "styled-components";
 import LogIn from "../images/LogIn.png";
@@ -99,11 +100,15 @@ const StyledLogIn = styled.div`
 const Login = props => {
   const { register, handleSubmit, watch, errors } = useForm();
 
+  console.log('username is =', watch('username'));
+  console.log('password is =', watch('password'));
+
   const submitForm = data => {
     axiosWithAuth()
       .post("", data)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
+        localStorage.setItem('userid', res.data.id);
         props.history.push("/protected");
       })
       .catch(err => {
@@ -133,6 +138,10 @@ const Login = props => {
           />
           {errors.password && <p>ERROR! This field is required!</p>}
           <input className="submit" type="submit" />
+          {/* <p>
+            Need an account? <br />
+            <Link to="/signup">Sign Up Here!</Link>{" "}
+          </p> */}
         </form>
       </div>
     </StyledLogIn>

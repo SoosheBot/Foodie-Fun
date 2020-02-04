@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+// import { Link } from "react-router-dom";
+
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 import styled from "styled-components";
@@ -33,8 +35,8 @@ const StyledSignUp = styled.div`
       opacity: 0.8;
     }
 
-    input[type="text"],
-    input[type="number"] {
+    input[name="email"],
+    input[name="username"] {
       border: 1px solid #e76e3c;
       border-radius: 5px;
       width: 80%;
@@ -87,6 +89,8 @@ const StyledSignUp = styled.div`
 const SignUp = props => {
   const { register, handleSubmit, watch, errors } = useForm();
 
+  console.log('signup form firing', watch('email'));
+
   const submitForm = data => {
     axiosWithAuth()
       .post("", data)
@@ -103,36 +107,58 @@ const SignUp = props => {
     <StyledSignUp>
       <div className="signup-form">
         <h1>Sign Up for Foodie Fun</h1>
-        <form onSubmit={submitForm}>
+        <form onSubmit={handleSubmit(submitForm)}>
+          <h3>Enter an Email</h3>
           <input
             type="text"
-            className="username"
-            placeholder="Enter username..."
-            value={credentials.username}
-            onChange={handleChange}
+            name="email"
+            placeholder="Enter an email..."
+            ref={register({ required: true, maxLength: 10 })}
           />
+          {errors.email && <p>ERROR! This field is required!</p>}
+
+          <h3>Create a Username</h3>
           <input
             type="text"
-            className="password"
-            placeholder="Enter password..."
-            value={credentials.password}
-            onChange={handleChange}
+            name="username"
+            placeholder="Enter a username..."
+            ref={register({ required: true, maxLength: 10 })}
           />
+          {errors.username && <p>ERROR! This field is required!</p>}
+
+          <h3>Create a Password</h3>
           <input
             type="text"
-            className="email"
-            placeholder="Enter email..."
-            value={credentials.email}
-            onChange={handleChange}
+            name="password"
+            placeholder="Enter a username..."
+            ref={register({ required: true, maxLength: 10 })}
           />
+          {errors.password && <p>ERROR! This field is required!</p>}
+
+          <h3>Confirm Password</h3>
+          <input
+            type="text"
+            name="confirm"
+            placeholder="Enter password again..."
+            ref={register({ required: true, maxLength: 10 })}
+          />
+          {errors.email && <p>ERROR! This field must match !</p>}
+          
+          <h3>Zipcode</h3>
           <input
             type="number"
-            className="location"
-            placeholder="Enter zip code..."
-            value={credentials.location}
-            onChange={handleChange}
+            name="zipcode"
+            placeholder="Enter your five digit zipcode..."
+            ref={register({ required: true, maxLength: 5 })}
           />
-          <button type="submit">Sign Up</button>
+          {errors.zipcode && <p>ERROR! This field is required!</p>}
+
+
+          
+          {/* <p>
+            Aleady have an account? <br />
+            <Link to="/login">Log in here!</Link>{" "}
+          </p> */}
         </form>
       </div>
     </StyledSignUp>
