@@ -128,9 +128,9 @@ const SignUp = props => {
 
   // console.log("signup form firing", watch("email"));
 
-  const submitForm = data => {
+  const submitForm = signupSubmit => {
     axiosWithAuth()
-      .post("/api/auth/register", data)
+      .post("/api/auth/register", signupSubmit)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         props.history.push("/login");

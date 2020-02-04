@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
@@ -15,26 +15,32 @@ const StyledLogIn = styled.div`
   width: 80%;
   margin: 2rem auto;
 
-  nav{
+  nav {
     display: flex;
     justify-content: flex-end;
-    align-items: center;        
+    align-items: center;
 
-   a{
-        width:10%;
-        padding: 2%;
-        text-decoration: none;
-        text-shadow: 1px 2px #181212;
-        font-size: 1.8vw;
-        font-weight:bold;
-        text-align: center;
-        &:hover{
-            color: #c45228;
-        }
-        @media(max-width: 500px){font-size: 0.5rem; display:flex; flex-direction:column;}
-        @media(max-width:825px){font-size: 1rem;}
-    } 
-} 
+    a {
+      width: 10%;
+      padding: 2%;
+      text-decoration: none;
+      text-shadow: 1px 2px #181212;
+      font-size: 1.8vw;
+      font-weight: bold;
+      text-align: center;
+      &:hover {
+        color: #c45228;
+      }
+      @media (max-width: 500px) {
+        font-size: 0.5rem;
+        display: flex;
+        flex-direction: column;
+      }
+      @media (max-width: 825px) {
+        font-size: 1rem;
+      }
+    }
+  }
 
   form {
     width: 70%;
@@ -104,8 +110,8 @@ const StyledLogIn = styled.div`
 
   h4 {
     color: #c45228;
-    font-weight:bold;
-    font-size:1.4rem;
+    font-weight: bold;
+    font-size: 1.4rem;
     text-shadow: 1px 1px #181212;
   }
 
@@ -141,8 +147,8 @@ const Login = props => {
       .post("/api/auth/login", data)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
-        localStorage.setItem('userid', res.data.id);
-        props.history.push("/protected");
+        localStorage.setItem("userid", res.data.id);
+        props.history.push("/dashboard");
       })
       .catch(err => {
         console.log("login error", err);
@@ -193,7 +199,6 @@ const Login = props => {
 };
 
 export default Login;
-
 
 // OLD CODE
 
