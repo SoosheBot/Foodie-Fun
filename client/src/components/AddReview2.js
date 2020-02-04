@@ -52,7 +52,7 @@ form {
         margin: 2rem auto;
       }
 
-      button {
+      .submit {
         width: 80%;
         padding: .5rem 1rem;
         background-color: #c45228;
@@ -147,9 +147,9 @@ export default function AddReview2(props) {
       ref={register({required: true, minLength: 10, maxLength: 500})}
       />
       {errors.review_description && 'a Review is required'}
-      <button>
-      <input type="submit" />
-      </button>  
+      
+      <input className='submit' type="submit" />
+       
     </form>
     </StyledAddReview>  
   );
