@@ -12,10 +12,8 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      
+    <div className="App">  
       <Router>
-      
         <Switch>
           <Route path="/" component={SignUp} />
           <Route path="/login" component={Login} />

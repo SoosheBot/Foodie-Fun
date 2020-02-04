@@ -144,7 +144,7 @@ const Login = props => {
 
   const submitForm = data => {
     axiosWithAuth()
-      .post("/api/auth/login", data)
+      .post("api/auth/login", data)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         localStorage.setItem("userid", res.data.id);
