@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from 'react';
-=======
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import { useForm } from 'react-hook-form';
@@ -157,4 +154,3 @@ const AddRestaurant = props => {
 };
 
 export default AddRestaurant;
->>>>>>> 0a4c2aba628b933cde4fa435f8f35ca29ca675f3
