@@ -140,7 +140,7 @@ const Login = props => {
           <input className="submit" type="submit" />
           <p>
             Need an account? <br />
-            <Link to="/">Sign Up Here!</Link>{" "}
+            <Link to="/signup">Sign Up Here!</Link>{" "}
           </p>
         </form>
       </div>

@@ -9,11 +9,24 @@ import Signup from "../images/Signup.png";
 
 const StyledSignUp = styled.div`
   margin-top: 8%;
-  height: 80vh;
+  height: 100%;
   color: #e8964a;
   display: block;
   width: 80%;
   margin: 2rem auto;
+
+  background-image: url(${Signup});
+      background-size: cover;
+      content: "";
+      display: block;
+      // position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.8;
+  
 
   form {
     width: 70%;
@@ -21,19 +34,19 @@ const StyledSignUp = styled.div`
     padding: 3rem 1rem;
     border-radius: 5rem;
 
-    ::before {
-      background-image: url(${Signup});
-      background-size: cover;
-      content: "";
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      opacity: 0.8;
-    }
+    // ::before {
+    //   background-image: url(${Signup});
+    //   background-size: cover;
+    //   content: "";
+    //   display: block;
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   z-index: -2;
+    //   opacity: 0.8;
+    // }
 
     input[name="email"],
     input[name="username"],
@@ -127,8 +140,8 @@ const SignUp = props => {
   return (
     <StyledSignUp>
       <div className="signup-form">
-        <h1>Sign Up for Foodie Fun</h1>
         <form onSubmit={handleSubmit(submitForm)}>
+        <h1>Sign Up for Foodie Fun</h1>
           <h2>Enter an Email</h2>
           <input
             type="text"
