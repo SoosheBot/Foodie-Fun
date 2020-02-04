@@ -1,6 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -36,7 +36,10 @@ const StyledSignUp = styled.div`
     }
 
     input[name="email"],
-    input[name="username"] {
+    input[name="username"],
+    input[name="password"],
+    input[name="confirm"],
+    input[name="location"] {
       border: 1px solid #e76e3c;
       border-radius: 5px;
       width: 80%;
@@ -51,29 +54,47 @@ const StyledSignUp = styled.div`
       margin: 2rem auto;
     }
 
-    button {
+    .submit {
       width: 50%;
       padding: 1rem;
       background-color: #c45228;
       border-radius: 5px;
       color: white;
-      font-weight: bold;
+      font-size: 0.9rem;
+      text-shadow: 1px 2px #181212;
       border: 1px solid #e76e3c;
 
       &:hover {
         background-color: #e8964a;
         border: 1px solid #e76e3c;
         color: #181212;
-        font-weight: bold;
+        text-shadow: 1px 2px white;
       }
     }
   }
+
+  h1 {
+    color: #c45228;
+    text-shadow: 1px 2px #181212;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #c45228;
+    text-shadow: 1px 2px #181212;
+  }
+
   p {
     color: black;
-    background-color: white;
-    width: 50%;
+    // background-color: white;
+    color: #c45228;
+    text-shadow: 1px 2px #181212;
+    // width: 50%;
     margin: 0 auto;
-    padding: 1rem;
+    // padding: 1rem;
   }
 
   a {
@@ -89,7 +110,7 @@ const StyledSignUp = styled.div`
 const SignUp = props => {
   const { register, handleSubmit, watch, errors } = useForm();
 
-  console.log('signup form firing', watch('email'));
+  console.log("signup form firing", watch("email"));
 
   const submitForm = data => {
     axiosWithAuth()
@@ -108,57 +129,58 @@ const SignUp = props => {
       <div className="signup-form">
         <h1>Sign Up for Foodie Fun</h1>
         <form onSubmit={handleSubmit(submitForm)}>
-          <h3>Enter an Email</h3>
+          <h2>Enter an Email</h2>
           <input
             type="text"
             name="email"
             placeholder="Enter an email..."
             ref={register({ required: true, maxLength: 10 })}
           />
-          {errors.email && <p>ERROR! This field is required!</p>}
+          {errors.email && <p>Email is required!</p>}
 
-          <h3>Create a Username</h3>
+          <h2>Create a Username</h2>
           <input
             type="text"
             name="username"
             placeholder="Enter a username..."
             ref={register({ required: true, maxLength: 10 })}
           />
-          {errors.username && <p>ERROR! This field is required!</p>}
+          {errors.username && <p>Username is required!</p>}
 
-          <h3>Create a Password</h3>
+          <h2>Create a Password</h2>
           <input
             type="text"
             name="password"
             placeholder="Enter a username..."
             ref={register({ required: true, maxLength: 10 })}
           />
-          {errors.password && <p>ERROR! This field is required!</p>}
+          {errors.password && <p>Password is required!</p>}
 
-          <h3>Confirm Password</h3>
+          <h2>Confirm Password</h2>
           <input
             type="text"
             name="confirm"
             placeholder="Enter password again..."
             ref={register({ required: true, maxLength: 10 })}
           />
-          {errors.email && <p>ERROR! This field must match !</p>}
-          
-          <h3>Zipcode</h3>
+          {errors.email && <p>Your passwords must match!</p>}
+
+          <h2>Zipcode</h2>
           <input
             type="number"
-            name="zipcode"
+            name="location"
             placeholder="Enter your five digit zipcode..."
             ref={register({ required: true, maxLength: 5 })}
           />
-          {errors.zipcode && <p>ERROR! This field is required!</p>}
+          {errors.location && <p>Your five-digit zipcode is required!</p>}
 
+          <br />
+          <input className="submit" type="submit" />
 
-          
-          {/* <p>
+          <h5>
             Aleady have an account? <br />
             <Link to="/login">Log in here!</Link>{" "}
-          </p> */}
+          </h5>
         </form>
       </div>
     </StyledSignUp>
