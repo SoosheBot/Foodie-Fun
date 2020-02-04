@@ -102,7 +102,7 @@ const SignUp = props => {
   return (
     <StyledSignUp>
       <div className="signup-form">
-        <h1>Sign Up</h1>
+        <h1>Sign Up for Foodie Fun</h1>
         <form onSubmit={submitForm}>
           <input
             type="text"
