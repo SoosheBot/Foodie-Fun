@@ -55,7 +55,7 @@ const StyledLogIn = styled.div`
       background-color: #c45228;
       border-radius: 5px;
       color: white;
-      font-size:0.9rem;
+      font-size: 0.9rem;
       text-shadow: 1px 2px #181212;
       border: 1px solid #e76e3c;
 
@@ -71,7 +71,6 @@ const StyledLogIn = styled.div`
   h1 {
     color: #c45228;
     text-shadow: 1px 2px #181212;
-    
   }
 
   h2 {
@@ -98,19 +97,11 @@ const StyledLogIn = styled.div`
 `;
 
 const Login = props => {
-  // const [credentials, setCredentials] = useState({
-  //     username:'',
-  //     password:''
-  // });
   const { register, handleSubmit, watch, errors } = useForm();
-
-  // const handleChange = e => {
-  //     setCredentials({...credentials, [e.target.name]: e.target.value});
-  // };
 
   const submitForm = data => {
     axiosWithAuth()
-      .post('', data)
+      .post("", data)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         props.history.push("/protected");
@@ -126,19 +117,22 @@ const Login = props => {
         <h1>Welcome! Log In to Your Foodie App!</h1>
         <form onSubmit={handleSubmit(submitForm)}>
           <h2>Username</h2>
-          <input type='name'
-            name="username" placeholder='Enter username...'
+          <input
+            type="name"
+            name="username"
+            placeholder="Enter username..."
             ref={register({ required: true, maxLength: 10 })}
           />
           {errors.username && <p>ERROR! This field is required!</p>}
 
           <h2>Password</h2>
           <input
-            name="password" placeholder='Enter password...'
+            name="password"
+            placeholder="Enter password..."
             ref={register({ required: true, maxLength: 10 })}
           />
           {errors.password && <p>ERROR! This field is required!</p>}
-          <input className='submit' type="submit" />
+          <input className="submit" type="submit" />
         </form>
       </div>
     </StyledLogIn>
@@ -146,6 +140,19 @@ const Login = props => {
 };
 
 export default Login;
+
+
+// OLD CODE
+
+// const Login = props => {
+// const [credentials, setCredentials] = useState({
+//     username:'',
+//     password:''
+// });
+
+// const handleChange = e => {
+//     setCredentials({...credentials, [e.target.name]: e.target.value});
+// };
 
 // <input type='text'
 // className='username'
