@@ -130,7 +130,7 @@ const SignUp = props => {
 
   const submitForm = data => {
     axiosWithAuth()
-      .post("", data)
+      .post("/register", data)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
         props.history.push("/login");
@@ -192,11 +192,11 @@ const SignUp = props => {
           />
           {errors.email && <p>Your passwords must match!</p>}
 
-          <h2>Zipcode</h2>
+          <h2>Location</h2>
           <input
-            type="number"
+            type="text"
             name="location"
-            placeholder="Enter your five digit zipcode..."
+            placeholder="Enter your location..."
             ref={register({ required: true, maxLength: 5 })}
           />
           {errors.location && <p>Your five-digit zipcode is required!</p>}
