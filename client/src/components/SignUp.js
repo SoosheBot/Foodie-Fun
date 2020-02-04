@@ -152,7 +152,7 @@ const SignUp = props => {
           Home
         </a>
         <Link to='/dashboard'>My Account</Link>
-        <Link to="/login">Log In</Link>
+        <Link to="./login">Log In</Link>
       </nav>
       <div className="signup-form">
         <form onSubmit={handleSubmit(submitForm)}>

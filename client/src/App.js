@@ -17,9 +17,9 @@ function App() {
       <Router>
       
         <Switch>
-          {/* <Route path='/add-restaurant' component={AddRestaurant} /> */}
           <Route path="/" component={SignUp} />
           <Route path="/login" component={Login} />
+          <Route component={Login} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
