@@ -1,14 +1,12 @@
 //trying react-form-hook
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { axiosWithAuth } from '../utils/axiosWithAuth'
 import styled from "styled-components";
 import LogIn from '../images/LogIn.png';
 
-export default function App() {
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = data => console.log(data);
-  console.log(errors);
+
 
   const StyledAddReview = styled.div`
 margin-top: 8%;
@@ -90,7 +88,34 @@ form {
       }
 
 `;
-  
+export default function AddReview2(props) {
+    const [review, setReview] = useState({
+        menuItem: "",
+        price: "",
+        rating: "",
+        reviewDesc: ""
+      });
+    const { register, handleSubmit, errors } = useForm();
+    const onSubmit = data => console.log(data);
+    console.log(errors);
+
+    const handleChange = e => {
+        setReview({ ...review, [e.target.name]: e.target.value });
+      };
+    
+      const submitForm = e => {
+        e.preventDefault();
+        axiosWithAuth()
+          .post()
+          .then(res => {
+            localStorage.setItem("token", res.data.payload);
+            props.history.push("/protected");
+          })
+          .catch(err => {
+            console.log("add Review error", err);
+          });
+      };
+
   return (
     <StyledAddReview>
         <h1>Add a new Review</h1>
