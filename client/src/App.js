@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import PrivateRoute from "./utils/PrivateRoute";
 import AddReview from "./components/AddReview";
+import SearchReview from './components/SearchReview';
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
@@ -16,6 +17,7 @@ function App() {
       <Router>
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path='/SearchReview' component={SearchReview} />
           <PrivateRoute path="/add-review" component={AddReview} />
           <Route exact path="/login" component={Login} />
           <Route path="/" component={SignUp} />
