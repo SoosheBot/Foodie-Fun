@@ -99,7 +99,7 @@ form {
       }
 
 `;
-const AddReview = props => {
+const AddReview = (props) => {
   const {
         menu_item,
         item_price,
@@ -131,9 +131,9 @@ const AddReview = props => {
     // };
   
     const submitForm = e => {
-      // e.preventDefault();
+      e.preventDefault();
       axiosWithAuth()
-        .post('api/reviews', e)
+        .post('api/reviews')
         .then(res => {
           //localStorage.setItem("token", res.data.payload);
           props.history.push("/dashboard");
