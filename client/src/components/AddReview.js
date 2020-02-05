@@ -3,8 +3,21 @@ import React, { useState } from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import styled from "styled-components";
 import LogIn from '../images/LogIn.png';
+import useForm from '../utils/useForm';
+import validate from '../utils/AddReviewValidationRules';
 
+// const Form = () => {
+//   const {
+//     values,
+//     errors,
+//     handleChange,
+//     handleSubmit,
+//   } = useForm(add, validate);
 
+//   function add() {
+//     console.log('No errors, submit callback called!');
+//   }
+// }
 
   const StyledAddReview = styled.div`
 margin-top: 8%;
@@ -105,7 +118,7 @@ const AddReview = props => {
       axiosWithAuth()
         .post('api/reviews')
         .then(res => {
-          localStorage.setItem("token", res.data.payload);
+          //localStorage.setItem("token", res.data.payload);
           props.history.push("/dashboard");
         })
         .catch(err => {
@@ -122,43 +135,49 @@ const AddReview = props => {
               type="text"
               className="MenuName"
               placeholder="Enter Menu item name..."
-              value={review.menu_item}
+              value={review.menu_item || ''}
               onChange={handleChange}
+              required
             />
             <input
               type="number"
               className="enter price"
               placeholder="Enter price..."
-              value={review.item_price}
+              value={review.item_price || ''}
               onChange={handleChange}
+              required
             />
             <input
               type="number"
               className="rating"
               placeholder="Enter rating..."
-              value={review.item_rating}
+              value={review.item_rating || ''}
               onChange={handleChange}
+              required
             />
             <input
               type="text"
               className="reviewDescription"
               placeholder="Enter a short review..."
-              value={review.item_review}
+              value={review.item_review || ''}
               onChange={handleChange}
+              required
             />
             <input
               type="number"
               className="reviewDescription"
               placeholder="Enter Restaurant ID..."
-              value={review.restaurant_id}
+              value={review.restaurant_id || ''}
               onChange={handleChange}
+              required
               />
               <input
               type="date"
               className="reviewDescription"
               placeholder="Enter a date..."
-              value={review.date_visited}
+              value={review.date_visited || ''}
               onChange={handleChange}
+              required
               />
             <button type="submit">Add Review</button>
           </form>
