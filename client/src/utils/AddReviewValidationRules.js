@@ -1,22 +1,22 @@
-export default function validate(values) {
+export default function validate(reviews) {
     let errors = {};
     
-    if(!values.menu_item) {
+    if(!reviews.menu_item) {
         errors.menu_item = 'Menu item is required';
     }
-    if(!values.item_price) {
+    if(!reviews.item_price) {
         errors.item_price = 'Price is required';
     }
-    if(!values.item_rating) {
+    if(!reviews.item_rating) {
         errors.item_rating = 'Enter a rating';
     }
-    if(!values.item_review) {
+    if(!reviews.item_review) {
         errors.item_review = 'Enter a short review';        
     }
-    if(!values.restaurant_id) {
+    if(!reviews.restaurant_id) {
         errors.restaurant_id = 'Enter the restaurant ID';
     }
-    if(!values.date_visited) {
+    if(!reviews.date_visited) {
         errors.date_visited = 'Enter visit date';
     }    
     return errors;

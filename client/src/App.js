@@ -6,7 +6,7 @@ import AddReview from "./components/AddReview";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
-// import AddRestaurant from './components/AddRestaurant';
+import AddRestaurant from './components/AddRestaurant';
 
 import "./App.css";
 
@@ -16,7 +16,8 @@ function App() {
       <Router>
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} />
-          <PrivateRoute path="/add-review" component={AddReview} />
+          <Route path="/add-restaurant" component={AddRestaurant} />
+          <Route path="/add-review" component={AddReview} />
           <Route exact path="/login" component={Login} />
           <Route path="/" component={SignUp} />
         </Switch>

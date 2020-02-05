@@ -146,8 +146,12 @@ const Login = props => {
     axiosWithAuth()
       .post("api/auth/login", data)
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
-        localStorage.setItem("userid", res.data.id);
+        localStorage.setItem("token", res.data.token);
+        if(res.data.reviewed_by) {
+          localStorage.setItem('reviewed_by', res.data.reviewed_by);
+          localStorage.setItem('created_by', res.data.created_by);
+          console.log('created by firing on login', res.data.created_by);
+        }
         props.history.push("/dashboard");
       })
       .catch(err => {
