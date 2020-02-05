@@ -85,8 +85,7 @@ const StyledAddReview = styled.div`
   }
 `;
 
-
-const AddReview = (props) => {
+const AddReview = props => {
   // console.log("props", props);
 
   const [review, setReview] = useState({
@@ -95,25 +94,24 @@ const AddReview = (props) => {
     item_rating: "",
     item_review: "",
     restaurant_id: "",
+    item_image_url:'',
     date_visited: ""
   });
 
-  console.log('review', review);
+  // console.log('review', review);
 
   const handleChange = e => {
-      setReview({ ...review, [e.target.name]: e.target.value });
-      console.log('handleChange is firing');
-    };
+    setReview({ ...review, [e.target.name]: e.target.value });
+    console.log("handleChange is firing");
+  };
 
-  
-
-  const submitForm = (e) => {
+  const submitForm = e => {
     e.preventDefault();
-    console.log("post success", review);
+    console.log("submitForm firing");
     axiosWithAuth()
       .post("api/reviews", review)
       .then(res => {
-        console.log('is posting')
+        console.log("is posting", res);
         setReview({
           ...review,
           menu_item: "",
@@ -121,10 +119,10 @@ const AddReview = (props) => {
           item_rating: "",
           item_review: "",
           restaurant_id: "",
+          item_image_url:'',
           date_visited: ""
         });
         props.history.push("/dashboard");
-        
       })
       .catch(err => {
         console.log("add Review error", err);
@@ -139,52 +137,57 @@ const AddReview = (props) => {
           type="text"
           placeholder="Add menu item"
           name="menu_item"
-          value={review.menu_item} 
+          value={review.menu_item}
           onChange={handleChange}
-          />
+        />
         <input
           type="number"
           placeholder="Price"
           name="item_price"
-          value={review.item_price} 
+          value={review.item_price}
           onChange={handleChange}
-          />
+        />
         <input
           type="number"
           placeholder="restid"
           name="restaurant_id"
-          value={review.restaurant_id} 
+          value={review.restaurant_id}
           onChange={handleChange}
-          />
+        />
         <input
           type="number"
           placeholder="put your rating here..."
           name="item_rating"
-          value={review.item_rating} 
+          value={review.item_rating}
           onChange={handleChange}
-          />
+        />
         <input
           type="text"
           name="item_review"
           placeholder="Provide a short review here..."
           value={review.item_review}
           onChange={handleChange}
-           />
+        />
+        <input type='text'
+        name='item_image_url'
+        placeholder='Add image URL...'
+        value={review.item_image_url}
+        onChange={handleChange}
+        />
         <input
           type="date"
           placeholder="Date"
           name="date_visited"
-          value={review.date_visited} 
+          value={review.date_visited}
           onChange={handleChange}
-          />
-        <button type='submit'>Submit</button>
+        />
+        <button type="submit">Submit</button>
       </form>
     </StyledAddReview>
   );
-}
+};
 
 export default AddReview;
-
 
 //Old AddReview code
 // import React, { useState } from 'react';
