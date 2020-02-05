@@ -6,20 +6,7 @@ import LogIn from '../images/LogIn.png';
 import useForm from '../utils/useForm';
 import validate from '../utils/AddReviewValidationRules';
 
-// const Form = () => {
-//   const {
-//     values,
-//     errors,
-//     handleChange,
-//     handleSubmit,
-//   } = useForm(add, validate);
-
-//   function add() {
-//     console.log('No errors, submit callback called!');
-//   }
-// }
-
-  const StyledAddReview = styled.div`
+const StyledAddReview = styled.div`
 margin-top: 8%;
   height: 80vh;
   color: #e8964a;
@@ -116,26 +103,12 @@ const AddReview = (props) => {
         console.log('No errors, submit callback called!');
       }
 
-
-    // const [review, setReview] = useState({
-    //   menu_item: "",
-    //   item_price: "",
-    //   item_rating: "",
-    //   item_review: "",
-    //   restaurant_id: '',
-    //   date_visited: ''
-    // });
-  
-    // const handleChange = e => {
-    //   setReview({ ...review, [e.target.name]: e.target.value });
-    // };
-  
     const submitForm = e => {
       e.preventDefault();
       axiosWithAuth()
         .post('api/reviews')
         .then(res => {
-          //localStorage.setItem("token", res.data.payload);
+          localStorage.setItem("token", res.data.payload);
           props.history.push("/dashboard");
         })
         .catch(err => {
@@ -211,6 +184,21 @@ const AddReview = (props) => {
   
   export default AddReview;
 
+
+  
+    // const [review, setReview] = useState({
+    //   menu_item: "",
+    //   item_price: "",
+    //   item_rating: "",
+    //   item_review: "",
+    //   restaurant_id: '',
+    //   date_visited: ''
+    // });
+  
+    // const handleChange = e => {
+    //   setReview({ ...review, [e.target.name]: e.target.value });
+    // };
+
   //old addreview2 code
 // export default function AddReview(props) {
 //     const [review, setReview] = useState({
@@ -260,14 +248,14 @@ const AddReview = (props) => {
 //       name="add_menu_item" 
 //       ref={register({required: true, maxLength: 20})} 
 //       />
-//       {errors.add_menu_item && 'Menu item is required'}
+//       {errors.menu_item && 'Menu item is required'}
 //       <input 
 //       type="number" 
 //       placeholder="Price"
 //       name="price" 
 //       ref={register({required: true, max: 100, min: 0, maxLength: 5})} 
 //       />
-//       {errors.price && 'Price is required'}<input 
+//       {errors.item_price && 'Price is required'}<input 
 //       type="number" 
 //       placeholder="restid"
 //       name="restaurant_id" 
@@ -279,14 +267,14 @@ const AddReview = (props) => {
 //       placeholder='put your rating here...'
 //       name="rating" 
 //       ref={register({required: true, max: 5, min: 1})}/>
-//       {errors.rating && 'a Rating is required'}
+//       {errors.item_rating && 'a Rating is required'}
 //       <input
 //       type='text'
 //       name="review_description" 
 //       placeholder='Provide a short review here...'
 //       ref={register({required: true, minLength: 10, maxLength: 500})}
 //       />
-//       {errors.review_description && 'a Review is required'}
+//       {errors.item_review_description && 'a Review is required'}
 //       <input 
 //       type="date" 
 //       placeholder="Date"

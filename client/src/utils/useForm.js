@@ -4,13 +4,22 @@ const useForm = (callback, validate) => {
 
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
+//   const [menu_item, setMenu_item] = useState({});  
+  
+//   item_price,
+//   item_rating,
+//   item_review,
+//   restaurant_id,
+//   date_visited
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
+  useEffect((callback, isSubmitting) => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       callback();
     }
   }, [errors]);
+  
 
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
