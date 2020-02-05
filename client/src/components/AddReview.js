@@ -1,108 +1,100 @@
-import React from 'react';
-// import { useForm } from 'react-hook-form';
-import { axiosWithAuth } from '../utils/axiosWithAuth'
+import React, { useState } from "react";
+// import { useForm } from "react-hook-form";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
+<<<<<<< HEAD
 import LogIn from '../images/LogIn.png';
 import useForm from '../utils/useForm';
 import validate from '../utils/AddReviewValidationRules';
 
 const StyledAddReview = styled.div`
 margin-top: 8%;
+=======
+import LogIn from "../images/LogIn.png";
+// import useForm from '../utils/useForm';
+// import validate from '../utils/AddReviewValidationRules';
+
+const StyledAddReview = styled.div`
+  margin-top: 8%;
+>>>>>>> 42abaa8ae08ac2813831d4e6a7a3cca035119a1e
   height: 80vh;
   color: #e8964a;
   display: block;
   width: 80%;
   margin: 2rem auto;
 
-form {
-    width: 70%;	    
-    margin: 1% auto 2% auto;	    
-    padding: 3rem 1rem;	      
-    border-radius: 5rem;	     
+  form {
+    width: 70%;
+    margin: 1% auto 2% auto;
+    padding: 3rem 1rem;
+    border-radius: 5rem;
 
     ::before {
-        background-image: url(${LogIn});
-        background-size: cover;
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        opacity: 0.8;
-      }   
-      
-      input[type="text"],
-      input[type="number"] {
-        border: 1px solid #e76e3c;
-        border-radius:5px;
-        width: 80%;
-        display: block;
-        margin: 1rem auto 2rem auto;
-        padding: 0.8rem 0;
-      }
+      background-image: url(${LogIn});
+      background-size: cover;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.8;
+    }
 
-      label {
-        display: block;
-        width: 80%;
-        margin: 2rem auto;
-      }
+    input[type="text"],
+    input[type="number"] {
+      border: 1px solid #e76e3c;
+      border-radius: 5px;
+      width: 80%;
+      display: block;
+      margin: 1rem auto 2rem auto;
+      padding: 0.8rem 0;
+    }
 
-      .submit {
-        width: 80%;
-        padding: .5rem 1rem;
-        background-color: #c45228;
-        border-radius:5px;
-        color: white;
-        font-weight:bold;
+    label {
+      display: block;
+      width: 80%;
+      margin: 2rem auto;
+    }
+
+    .submit {
+      width: 80%;
+      padding: 0.5rem 1rem;
+      background-color: #c45228;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      border: 1px solid #e76e3c;
+
+      &:hover {
+        background-color: #e8964a;
         border: 1px solid #e76e3c;
-  
-        &:hover{
-          background-color: #e8964a;
-          border: 1px solid #e76e3c;
-          color: #181212;
-          font-weight:bold;
-        }
+        color: #181212;
+        font-weight: bold;
       }
     }
-    p {
-        color: black;
-        background-color: white;
-        width: 50%;
-        margin: 0 auto;
-        padding: 1rem;
-      }
-    
-      a {
-        color: #e8964a;
-        text-decoration: none;
-    
-        &: hover {
-          text-decoration: underline;
+  }
+  p {
+    color: black;
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+    padding: 1rem;
+  }
 
-        }
-      }
+  a {
+    color: #e8964a;
+    text-decoration: none;
 
+    &: hover {
+      text-decoration: underline;
+    }
+  }
 `;
-const AddReview = (props) => {
-  const {
-        menu_item,
-        item_price,
-        item_rating,
-        item_review,
-        restaurant_id,
-        date_visited,
-        errors,
-        handleChange,
-        handleSubmit,
-      } = useForm(add, validate);
-    
-      function add() {
-        console.log('No errors, submit callback called!');
-      }
 
+<<<<<<< HEAD
     const submitForm = e => {
       e.preventDefault();
       axiosWithAuth()
@@ -113,74 +105,52 @@ const AddReview = (props) => {
         })
         .catch(err => {
           console.log("add Review error", err);
-        });
-    };
-  
-    return (
-      <StyledAddReview>
-      <div className="addReview-form">
-           <h1>Add a new Review</h1>
-          <form onSubmit={handleSubmit(submitForm)} noValidate>
-            <input
-              type="text"
-              className="MenuName"
-              placeholder="Enter Menu item name..."
-              value={menu_item || ''}
-              onChange={handleChange}
-              required
-            />
-            {errors.menu_item && <p>Menu item is required!</p>}
-            <input
-              type="number"
-              className="enter price"
-              placeholder="Enter price..."
-              value={item_price || ''}
-              onChange={handleChange}
-              required
-            />
-            {errors.item_price && <p>Price is required!</p>}
-            <input
-              type="number"
-              className="rating"
-              placeholder="Enter rating..."
-              value={item_rating || ''}
-              onChange={handleChange}
-              required
-            />
-            {errors.item_rating && <p>Rating is required!</p>}
-            <input
-              type="text"
-              className="reviewDescription"
-              placeholder="Enter a short review..."
-              value={item_review || ''}
-              onChange={handleChange}
-              required
-            />
-            {errors.item_review && <p>Review is required!</p>}
-            <input
-              type="number"
-              className="reviewDescription"
-              placeholder="Enter Restaurant ID..."
-              value={restaurant_id || ''}
-              onChange={handleChange}
-              required
-              />
-              {errors.restaurant_id && <p>Restaurant ID is required!</p>}
-              <input
-              type="date"
-              className="reviewDescription"
-              placeholder="Enter a date..."
-              value={date_visited || ''}
-              onChange={handleChange}
-              required
-              />
-              {errors.date_visited && <p>Valid Date is required!</p>}
-            <button type="submit">Add Review</button>
-          </form>
-      </div>
-      </StyledAddReview>
-    );
+=======
+const AddReview = props => {
+  // console.log("props", props);
+
+  const [review, setReview] = useState({
+    menu_item: "",
+    item_price: "",
+    item_rating: "",
+    item_review: "",
+    restaurant_id: "",
+    item_image_url:'',
+    date_visited: ""
+  });
+
+  // console.log('review', review);
+
+  const handleChange = e => {
+    setReview({ ...review, [e.target.name]: e.target.value });
+    console.log("handleChange is firing");
   };
+
+  const submitForm = e => {
+    e.preventDefault();
+    console.log("submitForm firing");
+    axiosWithAuth()
+      .post("api/reviews", review)
+      .then(res => {
+        console.log("is posting", res);
+        setReview({
+          ...review,
+          menu_item: "",
+          item_price: "",
+          item_rating: "",
+          item_review: "",
+          restaurant_id: "",
+          item_image_url:'',
+          date_visited: ""
+>>>>>>> 42abaa8ae08ac2813831d4e6a7a3cca035119a1e
+        });
+        props.history.push("/dashboard");
+      })
+      .catch(err => {
+        console.log("add Review error", err);
+      });
+  };
+<<<<<<< HEAD
   
   export default AddReview;
 
@@ -289,6 +259,69 @@ const AddReview = (props) => {
 //     </StyledAddReview>  
 //   );
 // }
+=======
+
+  return (
+    <StyledAddReview>
+      <h1>Add a new Review</h1>
+      <form onSubmit={submitForm}>
+        <input
+          type="text"
+          placeholder="Add menu item"
+          name="menu_item"
+          value={review.menu_item}
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          placeholder="Price"
+          name="item_price"
+          value={review.item_price}
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          placeholder="restid"
+          name="restaurant_id"
+          value={review.restaurant_id}
+          onChange={handleChange}
+        />
+        <input
+          type="number"
+          placeholder="put your rating here..."
+          name="item_rating"
+          value={review.item_rating}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="item_review"
+          placeholder="Provide a short review here..."
+          value={review.item_review}
+          onChange={handleChange}
+        />
+        <input type='text'
+        name='item_image_url'
+        placeholder='Add image URL...'
+        value={review.item_image_url}
+        onChange={handleChange}
+        />
+        <input
+          type="date"
+          placeholder="Date"
+          name="date_visited"
+          value={review.date_visited}
+          onChange={handleChange}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </StyledAddReview>
+  );
+};
+
+export default AddReview;
+
+>>>>>>> 42abaa8ae08ac2813831d4e6a7a3cca035119a1e
 //Old AddReview code
 // import React, { useState } from 'react';
 // import { axiosWithAuth } from '../utils/axiosWithAuth'
@@ -307,10 +340,10 @@ const AddReview = (props) => {
 //   margin: 2rem auto;
 
 // form {
-//     width: 70%;	    
-//     margin: 1% auto 2% auto;	    
-//     padding: 3rem 1rem;	      
-//     border-radius: 5rem;	     
+//     width: 70%;
+//     margin: 1% auto 2% auto;
+//     padding: 3rem 1rem;
+//     border-radius: 5rem;
 
 //     ::before {
 //         background-image: url(${LogIn});
@@ -324,8 +357,8 @@ const AddReview = (props) => {
 //         height: 100%;
 //         z-index: -2;
 //         opacity: 0.8;
-//       }   
-      
+//       }
+
 //       input[type="text"],
 //       input[type="number"] {
 //         border: 1px solid #e76e3c;
@@ -350,7 +383,7 @@ const AddReview = (props) => {
 //         color: white;
 //         font-weight:bold;
 //         border: 1px solid #e76e3c;
-  
+
 //         &:hover{
 //           background-color: #e8964a;
 //           border: 1px solid #e76e3c;
@@ -366,11 +399,11 @@ const AddReview = (props) => {
 //         margin: 0 auto;
 //         padding: 1rem;
 //       }
-    
+
 //       a {
 //         color: #e8964a;
 //         text-decoration: none;
-    
+
 //         &: hover {
 //           text-decoration: underline;
 
@@ -445,6 +478,3 @@ const AddReview = (props) => {
 // };
 
 // export default AddReview;
-
-
-
