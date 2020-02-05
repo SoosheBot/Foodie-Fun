@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+// import AddReview from './AddReview';
 
 import styled from "styled-components";
 import DashBoard from "../images/DashBoard.png";
@@ -147,22 +148,22 @@ const StyledDashBoard = styled.div`
 //         margin: 2rem auto;
 //       }
 
-//       button {
-//         width: 50%;
-//         padding: 1rem;
-//         background-color: #c45228;
-//         border-radius:5px;
-//         color: white;
-//         font-weight:bold;
-//         border: 1px solid #e76e3c;
+      button {
+        width: 50%;
+        padding: 1rem;
+        background-color: #c45228;
+        border-radius:5px;
+        color: white;
+        font-weight:bold;
+        border: 1px solid #e76e3c;
   
-//         &:hover{
-//           background-color: #e8964a;
-//           border: 1px solid #e76e3c;
-//           color: #181212;
-//           font-weight:bold;
-//         }
-//       }
+        &:hover{
+          background-color: #e8964a;
+          border: 1px solid #e76e3c;
+          color: #181212;
+          font-weight:bold;
+        }
+      }
 //     }
 //     p {
 //         color: black;
@@ -229,10 +230,13 @@ const Dashboard = (props) => {
                     <h3>{resto.item_review}</h3>
                 </div>
                 </div>
+                 
             )
         })
         }
         </div>
+        
+        <Link to='/add-review'>Add a Review</Link>
     </StyledDashBoard>
   );
 };
