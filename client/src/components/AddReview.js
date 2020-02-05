@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import { useForm } from 'react-hook-form';
 import { axiosWithAuth } from '../utils/axiosWithAuth'
 import styled from "styled-components";
@@ -100,23 +100,40 @@ form {
 
 `;
 const AddReview = props => {
-    const [review, setReview] = useState({
-      menu_item: "",
-      item_price: "",
-      item_rating: "",
-      item_review: "",
-      restaurant_id: '',
-      date_visited: ''
-    });
+  const {
+        menu_item,
+        item_price,
+        item_rating,
+        item_review,
+        restaurant_id,
+        date_visited,
+        errors,
+        handleChange,
+        handleSubmit,
+      } = useForm(add, validate);
+    
+      function add() {
+        console.log('No errors, submit callback called!');
+      }
+
+
+    // const [review, setReview] = useState({
+    //   menu_item: "",
+    //   item_price: "",
+    //   item_rating: "",
+    //   item_review: "",
+    //   restaurant_id: '',
+    //   date_visited: ''
+    // });
   
-    const handleChange = e => {
-      setReview({ ...review, [e.target.name]: e.target.value });
-    };
+    // const handleChange = e => {
+    //   setReview({ ...review, [e.target.name]: e.target.value });
+    // };
   
     const submitForm = e => {
-      e.preventDefault();
+      // e.preventDefault();
       axiosWithAuth()
-        .post('api/reviews')
+        .post('api/reviews', e)
         .then(res => {
           //localStorage.setItem("token", res.data.payload);
           props.history.push("/dashboard");
@@ -130,55 +147,61 @@ const AddReview = props => {
       <StyledAddReview>
       <div className="addReview-form">
            <h1>Add a new Review</h1>
-          <form onSubmit={submitForm}>
+          <form onSubmit={handleSubmit(submitForm)} noValidate>
             <input
               type="text"
               className="MenuName"
               placeholder="Enter Menu item name..."
-              value={review.menu_item || ''}
+              value={menu_item || ''}
               onChange={handleChange}
               required
             />
+            {errors.menu_item && <p>Menu item is required!</p>}
             <input
               type="number"
               className="enter price"
               placeholder="Enter price..."
-              value={review.item_price || ''}
+              value={item_price || ''}
               onChange={handleChange}
               required
             />
+            {errors.item_price && <p>Price is required!</p>}
             <input
               type="number"
               className="rating"
               placeholder="Enter rating..."
-              value={review.item_rating || ''}
+              value={item_rating || ''}
               onChange={handleChange}
               required
             />
+            {errors.item_rating && <p>Rating is required!</p>}
             <input
               type="text"
               className="reviewDescription"
               placeholder="Enter a short review..."
-              value={review.item_review || ''}
+              value={item_review || ''}
               onChange={handleChange}
               required
             />
+            {errors.item_review && <p>Review is required!</p>}
             <input
               type="number"
               className="reviewDescription"
               placeholder="Enter Restaurant ID..."
-              value={review.restaurant_id || ''}
+              value={restaurant_id || ''}
               onChange={handleChange}
               required
               />
+              {errors.restaurant_id && <p>Restaurant ID is required!</p>}
               <input
               type="date"
               className="reviewDescription"
               placeholder="Enter a date..."
-              value={review.date_visited || ''}
+              value={date_visited || ''}
               onChange={handleChange}
               required
               />
+              {errors.date_visited && <p>Valid Date is required!</p>}
             <button type="submit">Add Review</button>
           </form>
       </div>
