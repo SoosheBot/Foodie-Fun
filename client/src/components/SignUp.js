@@ -136,6 +136,7 @@ const SignUp = props => {
       .post("api/auth/register", signupSubmit)
       .then(res => {
         localStorage.setItem("token", res.data.token);
+        
         props.history.push("/login");
       })
       .catch(err => {

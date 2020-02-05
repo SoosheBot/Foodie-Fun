@@ -2,31 +2,41 @@ import { useState, useEffect } from 'react';
 
 const useForm = (callback, validate) => {
 
-  const [values, setValues] = useState({});
+  console.log('callback is', callback);
+  console.log('validate is', validate);
+
+  const [reviews, setReviews] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  console.log('reviews is firing', reviews);
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
+    console.log('useEffect firing')
+    if (Object.keys(errors).length === 0 && isSubmitting === true) {
       callback();
     }
-  }, [errors]);
+  }, [errors, callback, isSubmitting]);
 
   const handleSubmit = (event) => {
-    if (event) event.preventDefault();
-    setErrors(validate(values));
-    setIsSubmitting(true);
+    console.log('handleSubmit event', event)
+    if (event) {
+    event.preventDefault(); 
+    setErrors(validate(reviews));
+    setIsSubmitting(true); 
+    } else {
+      return console.log('handleSubmit error')
+    }
   };
 
   const handleChange = (event) => {
     event.persist();
-    setValues(values => ({ ...values, [event.target.name]: event.target.value }));
+    setReviews(reviews => ({ ...reviews, [event.target.name]: event.target.value }));
   };
 
   return {
     handleChange,
     handleSubmit,
-    values,
+    reviews,
     errors,
   }
 };
