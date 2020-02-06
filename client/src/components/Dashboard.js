@@ -153,7 +153,7 @@ const Dashboard = props => {
                   <figure>
                     <img src={resto.img_url} alt="Menu item" />
                   </figure>
-                  <h3>Cuisine ID: {resto.cuisine_id}</h3>
+                  <h3>Cuisine: {resto.cuisine_name}</h3>
                   <h3>Hours: {resto.hours_of_operation}</h3>
                   <Link to="/add-review">Add Review</Link>
                 </div>
