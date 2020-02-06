@@ -183,7 +183,7 @@ const SignUp = props => {
           <input
             type="text"
             name="password"
-            placeholder="Enter a username..."
+            placeholder="Enter a password..."
             ref={register({ required: true, maxLength: 10 })}
           />
           {errors.password && <p>Password is required!</p>}
