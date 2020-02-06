@@ -1,9 +1,8 @@
 
 // Search by:
 
-// Restaurant
+
 // $ of item 
-// cuisine
 // most recent visit 
 // menu rating 
 // Restaurant rating 
