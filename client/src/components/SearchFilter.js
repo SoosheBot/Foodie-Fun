@@ -120,11 +120,11 @@ const SearchFilter = props => {
                 <button type ='button'>Menu item Search</button>
             </Link>
             <Link to='/SearchRestaurant'>
-                <button type='button'>Restaurant Search</button>
+                <button type='button'>Search Restaurants by Name</button>
             </Link>
 
 
-                <button>Search Restaurants by rating</button>
+                <button>Search Restaurants by Rating</button>
 
 
             <Link to='/SearchCuisine'>
