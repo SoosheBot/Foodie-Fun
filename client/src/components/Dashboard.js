@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 import Reviews from './Reviews';
+import EditReview from './EditReview';
 
 
 import styled from "styled-components";
@@ -166,7 +167,7 @@ const Dashboard = () => {
                   </figure>
                   <h3>Cuisine: {resto.cuisine_name}</h3>
                   <h3>Hours: {resto.hours_of_operation}</h3>  
-            <h3>Location: {resto.location}</h3>
+                  <h3>Location: {resto.location}</h3>
                 </div> 
                 
                </div>
@@ -174,6 +175,7 @@ const Dashboard = () => {
             );
           })}
         <Reviews />
+        
       </div>
 
       

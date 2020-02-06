@@ -4,9 +4,8 @@ import EditReview from "./EditReview";
 
 // import EditReview from './EditReview';
 
-const Reviews = (props) => {
+const Reviews = props => {
   const [myReviews, setMyReviews] = useState([]);
-
 
   const reviewed = localStorage.getItem("reviewed_by");
 
@@ -22,27 +21,6 @@ const Reviews = (props) => {
       });
   }, [reviewed]);
 
-  const editReview = (id, item) => { 
-    // e.preventDefault();
-    axiosWithAuth()
-      .put(`api/reviews/${id}`, item)
-      .then(res => {
-        console.log("editReview is firing", res.data);
-        const updatedItem = res.data
-        const newItems = myReviews.map(item => {
-          if(item.id !== updatedItem.id){
-            return item;
-          }
-          return updatedItem;
-        })
-        setMyReviews(newItems);
-        props.history.push('/dashboard');
-      })
-      .catch(err => {
-        console.log("Error", err);
-      });
-  };
-
 
   return (
     <div className="my-reviews">
@@ -54,18 +32,10 @@ const Reviews = (props) => {
                 <h3>Review: {myreview.item_review}</h3>
               </div>
               <div className="edit-reviews">
-              <div className="edit-reviews">
-      <button type='submit' className="edit-button" onClick={editReview}>
-        Edit
-      </button>
-    </div>               
-                <button
-                  type="submit"
-                  className="delete-button"
-                  
-                >
+                <EditReview myreview={myreview}/>
+                {/* <button type="submit" className="delete-button">
                   Delete
-                </button>
+                </button> */}
               </div>
             </div>
           );

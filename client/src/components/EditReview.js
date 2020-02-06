@@ -1,35 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const initialItem = {
-  id: "",
-  item_review: ""
-};
-const EditReview = props => {
-  const [updates, setUpdates] = useState({ initialItem });
+const initialValue = {
+  id:'',
+  item_review:''
+}
 
-  useEffect(() => {
-    console.log("props test", props.items);
-    const editingItem = props.items.find(thing => {
-      return thing.id === Number(props.match.params.id);
-    });
-    if (editingItem) {
-      setUpdates(editingItem);
-    }
-  }, [props.items, props.match.params]);
+
+const EditReview = props => {
+  const [updates, setUpdates] = useState(initialValue);
+
+  // const [items, setItems] = useState();
+  // const reviewed = localStorage.getItem("reviewed_by");
+
+  // useEffect(() => {
+  //   axiosWithAuth()
+  //     .get(`api/users/${reviewed}/reviews`)
+  //     .then(res => {
+  //       // console.log("reviews res.data", res.data);
+  //       setUpdates(res.data);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }, [reviewed]);
+
 
   const handleChange = ev => {
     ev.persist();
-    let value = ev.target.value;
-    console.log("updates", updates);
-    setUpdates({ ...updates, [ev.target.name]: value });
+    setUpdates({ ...updates, [ev.target.name]: ev.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const id = Number(props.match.params.id);
-    props.editReview(id, updates);
-  };
+    axiosWithAuth()
+    .put(`api/reviews/${props.myreview.id}`, updates)
+      .then(res => {
+        // props.history.push("/dashboard");
+        props.setMyReviews(res.data)
+        console.log('res.data', res.data)
+        setUpdates(initialValue)
+
+      })
+      .catch(err => {
+        console.log("Error making update request", err);
+      });
+  }
 
   return (
     <div className="edit-reviews">
@@ -37,14 +53,52 @@ const EditReview = props => {
         <input
           type="text"
           name="item_review"
+          placeholder="Edit your review"
           onChange={handleChange}
           value={updates.item_review}
         />
-        <button type="submit">Edit</button>
+        <button type="submit" >Submit Edits</button>
       </form>
+
     </div>
   );
 };
+
+  // const editReview = () => {
+  //   useEffect(() => {
+  //     axiosWithAuth()
+  //     .put(`api/reviews/${updates.id}`, updates)
+  //     .then(res => {
+  //       console.log(res);
+  //       props.history.push("/dashboard");
+  //     })
+  //     .catch(err => {
+  //       console.log("Error making update request", err);
+  //     });
+      
+  //   },[updates]);
+      
+  // }
+
+
+  // return (
+  //   <div className="edit-reviews">
+  //     {updates &&
+  //       updates.map((update, index) => {
+  //         return (
+  //           <div key={index}>
+  //             <div className="edit-review" key={update.id} update={update}>
+  //               <h3>Review: {update.item_review}</h3>
+  //             </div>
+  //             <button type='submit' onClick={() => editReview(update)}>Edit</button>
+  //           </div>
+  //         );
+  //       })}
+        
+  //   </div>
+  // );
+
+  
 
 export default EditReview;
 
