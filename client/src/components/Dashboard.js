@@ -140,7 +140,7 @@ const Dashboard = props => {
           Home
         </a>
         <Link to="/login">Log Out</Link>
-        <Link to="/">Search</Link>
+        <Link to="/SearchFilter">Search</Link>
       </nav>
 
       <div className="dashboard">
