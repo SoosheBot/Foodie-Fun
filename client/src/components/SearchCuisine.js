@@ -193,24 +193,22 @@ function SearchCuisine() {
         setItems(cuisine.map(({ id, cuisine_name }) => ({ label: id, value: cuisine_name })));
         setLoading(false);
       }
-    //   getCharacters();
+    
        )
     }, []);
     return (
       <StyledSearchCuisines>   
       
-       
+       <h1>Cuisine Search</h1>
        <form className="search">
          <select
          disabled={loading}
-         value={cuisine_name}>
+         value={items}> 
 
           {/* <input
             type="text"
             //onChange={handleInputChange}
-            value={id.cuisine_name}
-            name="name"
-            tabIndex="0"
+            
             className="prompt search-name"
             placeholder="search by Cuisine"
             autoComplete="off"
