@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
 import AddRestaurant from './components/AddRestaurant';
+import SearchCuisine from './components/SearchCuisine';
 
 import "./App.css";
 
@@ -19,6 +20,7 @@ function App() {
       <Router>
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path='/SearchCuisine' component={SearchCuisine}/>
           <PrivateRoute path='/SearchReview' component={SearchReview} />
           <PrivateRoute path='/SearchFilter' component={SearchFilter} />
           <PrivateRoute path='/SearchRestaurant' component={SearchRestaurant} />

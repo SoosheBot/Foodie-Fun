@@ -115,10 +115,6 @@ const StyledSearchRestaurant = styled.div`
 //   }
 `;
 
-
-
-
-
 export default function ReviewsList() {
     const [data, setData] = useState([]);
     const [query, setQuery] = useState("");
@@ -166,7 +162,7 @@ export default function ReviewsList() {
             return (
             <div key={data.id}>
             <h3>Name: {data.name}</h3>
-            <h3>Cuisine: {data.cuisine_id.name}</h3>
+            <h3>Cuisine: {data.cuisine_name}</h3>
             <h4>Location: {data.location}</h4>
             <h4>Hours: {data.hours_of_operation}</h4>
             <h4>Restaurant Image: {data.img_url}</h4>
