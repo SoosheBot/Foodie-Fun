@@ -17,13 +17,10 @@ function App() {
       <Router>
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} />
-<<<<<<< HEAD
           <PrivateRoute path='/SearchReview' component={SearchReview} />
           <PrivateRoute path="/add-review" component={AddReview} />
-=======
           <Route path="/add-restaurant" component={AddRestaurant} />
           <Route path="/add-review" component={AddReview} />
->>>>>>> 42abaa8ae08ac2813831d4e6a7a3cca035119a1e
           <Route exact path="/login" component={Login} />
           <Route path="/" component={SignUp} />
         </Switch>

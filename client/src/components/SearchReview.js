@@ -22,10 +22,11 @@ export default function ReviewsList() {
     useEffect(() => {
       axiosWithAuth()
         .get('api/reviews')
-        .then(response => {
-          const reviews = response.data.results.filter(
+        .then(res => {
+            //console.log('results', res)
+          const reviews = res.data.filter(
             review =>
-              review.name
+              review.menu_item
                 .toLowerCase()
                 .includes(query.toLowerCase())
           );

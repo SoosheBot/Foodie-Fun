@@ -2,21 +2,12 @@ import React, { useState } from "react";
 // import { useForm } from "react-hook-form";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import styled from "styled-components";
-<<<<<<< HEAD
-import LogIn from '../images/LogIn.png';
-import useForm from '../utils/useForm';
-import validate from '../utils/AddReviewValidationRules';
-
-const StyledAddReview = styled.div`
-margin-top: 8%;
-=======
 import LogIn from "../images/LogIn.png";
 // import useForm from '../utils/useForm';
 // import validate from '../utils/AddReviewValidationRules';
 
 const StyledAddReview = styled.div`
   margin-top: 8%;
->>>>>>> 42abaa8ae08ac2813831d4e6a7a3cca035119a1e
   height: 80vh;
   color: #e8964a;
   display: block;
@@ -94,18 +85,6 @@ const StyledAddReview = styled.div`
   }
 `;
 
-<<<<<<< HEAD
-    const submitForm = e => {
-      e.preventDefault();
-      axiosWithAuth()
-        .post('api/reviews')
-        .then(res => {
-          localStorage.setItem("token", res.data.payload);
-          props.history.push("/dashboard");
-        })
-        .catch(err => {
-          console.log("add Review error", err);
-=======
 const AddReview = props => {
   // console.log("props", props);
 
@@ -142,7 +121,6 @@ const AddReview = props => {
           restaurant_id: "",
           item_image_url:'',
           date_visited: ""
->>>>>>> 42abaa8ae08ac2813831d4e6a7a3cca035119a1e
         });
         props.history.push("/dashboard");
       })
@@ -150,116 +128,6 @@ const AddReview = props => {
         console.log("add Review error", err);
       });
   };
-<<<<<<< HEAD
-  
-  export default AddReview;
-
-
-  
-    // const [review, setReview] = useState({
-    //   menu_item: "",
-    //   item_price: "",
-    //   item_rating: "",
-    //   item_review: "",
-    //   restaurant_id: '',
-    //   date_visited: ''
-    // });
-  
-    // const handleChange = e => {
-    //   setReview({ ...review, [e.target.name]: e.target.value });
-    // };
-
-  //old addreview2 code
-// export default function AddReview(props) {
-//     const [review, setReview] = useState({
-//         menu_item: "",
-//         item_price: "",
-//         item_rating: "",
-//         item_review: "",
-//         restaurant_id: '',
-//         date_visited: ''
-//       });
-//     const { register, handleSubmit, errors } = useForm();
-//     const onSubmit = data => console.log(data);
-//     console.log(errors);
-
-//     const handleChange = e => {
-//         setReview({ ...review, [e.target.name]: e.target.value });
-//       };
-    
-//       const submitForm = e => {
-//         e.preventDefault();
-//         axiosWithAuth()
-//           .post('api/reviews')
-//           .then(res => {
-//             setReview({...review, 
-//               menu_item: "",
-//               item_price: "",
-//               item_rating: "",
-//               item_review: "",
-//               restaurant_id: '',
-//               date_visited: ''
-//             } )
-//             // localStorage.setItem("token", res.data.payload);
-//             props.history.push("/dashboard");
-//           })
-//           .catch(err => {
-//             console.log("add Review error", err);
-//           });
-//       };
-
-//   return (
-//     <StyledAddReview>
-//         <h1>Add a new Review</h1>
-//     <form onSubmit={handleSubmit(submitForm)}>
-//       <input
-//       type="text" 
-//       placeholder="Add menu item" 
-//       name="add_menu_item" 
-//       ref={register({required: true, maxLength: 20})} 
-//       />
-//       {errors.menu_item && 'Menu item is required'}
-//       <input 
-//       type="number" 
-//       placeholder="Price"
-//       name="price" 
-//       ref={register({required: true, max: 100, min: 0, maxLength: 5})} 
-//       />
-//       {errors.item_price && 'Price is required'}<input 
-//       type="number" 
-//       placeholder="restid"
-//       name="restaurant_id" 
-//       ref={register({required: true, max: 10, min: 0, maxLength: 2})} 
-//       />
-//       {errors.restaurant_id && 'Restaurant id is required'}
-//       <input 
-//       type='number'
-//       placeholder='put your rating here...'
-//       name="rating" 
-//       ref={register({required: true, max: 5, min: 1})}/>
-//       {errors.item_rating && 'a Rating is required'}
-//       <input
-//       type='text'
-//       name="review_description" 
-//       placeholder='Provide a short review here...'
-//       ref={register({required: true, minLength: 10, maxLength: 500})}
-//       />
-//       {errors.item_review_description && 'a Review is required'}
-//       <input 
-//       type="date" 
-//       placeholder="Date"
-//       name="date_visited" 
-//       ref={register({required: true, max: 100, min: 0, maxLength: 20})} 
-//       />
-//       {errors.date_visited && 'Date is required'}
-      
-//       <input className='submit' type="submit" />
-       
-//     </form>
-//     </StyledAddReview>  
-//   );
-// }
-=======
 
   return (
     <StyledAddReview>
@@ -321,7 +189,6 @@ const AddReview = props => {
 
 export default AddReview;
 
->>>>>>> 42abaa8ae08ac2813831d4e6a7a3cca035119a1e
 //Old AddReview code
 // import React, { useState } from 'react';
 // import { axiosWithAuth } from '../utils/axiosWithAuth'
