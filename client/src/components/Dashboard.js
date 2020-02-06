@@ -4,6 +4,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 import Reviews from './Reviews';
 
+
 import styled from "styled-components";
 import DashBoard from "../images/DashBoard.png";
 
@@ -76,6 +77,8 @@ const StyledDashBoard = styled.div`
     &: hover {
       text-decoration: underline;
     }
+
+
   }
 
   .dashboard {
@@ -119,6 +122,7 @@ const StyledDashBoard = styled.div`
 
 const Dashboard = () => {
   const [restos, setRestos] = useState([]);
+  
   const userid = localStorage.getItem("created_by");
   
 
@@ -126,15 +130,13 @@ const Dashboard = () => {
     axiosWithAuth()
       .get(`api/users/${userid}/restaurants`)
       .then(res => {
-        console.log("setRestos firing", res.data)
+        // console.log("setRestos firing", res.data)
         setRestos(res.data);
       })
       .catch(err => {
         console.log("get restos error", err);
       });
-  }, []);
-
-  
+  }, [userid]);
 
   return (
     <StyledDashBoard>
@@ -152,28 +154,29 @@ const Dashboard = () => {
         <Link to="/">Search</Link>
       </nav>
 
-      <div className="dashboard">
-        {restos &&
-          restos.map(resto => {
+      <div className="dashboard"> 
+      {restos &&
+          restos.map((resto, index) => {
             return (
-              <div className="restaurant">
-                <div key {...resto.id} resto={resto}>
+            <div key={index}>
+                <div className='restaurant' key={resto.id} resto={resto}>
                   <h3>Restaurant Name: {resto.name}</h3>
                   <figure>
                     <img src={resto.img_url} alt="Menu item" />
                   </figure>
-                  <h3>Cuisine ID: {resto.cuisine_id}</h3>
-                  <h3>Hours: {resto.hours_of_operation}</h3>
-                  {/* <Link to="/add-review">Add Review</Link> */} 
-                  <Reviews />
-                </div>  
-              </div>
+                  <h3>Cuisine: {resto.cuisine_name}</h3>
+                  <h3>Hours: {resto.hours_of_operation}</h3>  
+            <h3>Location: {resto.location}</h3>
+                </div> 
+                
+               </div>
               
             );
           })}
-          
-          
+        <Reviews />
       </div>
+
+      
       <nav>
       <Link to="/add-review">Add Review</Link>
       <Link to="/add-restaurant">Add a Restaurant</Link>
