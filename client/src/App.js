@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./utils/PrivateRoute";
 import AddReview from "./components/AddReview";
 import SearchReview from './components/SearchReview';
+import SearchFilter from './components/SearchFilter';
+import SearchRestaurant from './/components/SearchRestaurant';
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
@@ -18,6 +20,8 @@ function App() {
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path='/SearchReview' component={SearchReview} />
+          <PrivateRoute path='/SearchFilter' component={SearchFilter} />
+          <PrivateRoute path='/SearchRestaurant' component={SearchRestaurant} />
           <PrivateRoute path="/add-review" component={AddReview} />
           <Route path="/add-restaurant" component={AddRestaurant} />
           <Route path="/add-review" component={AddReview} />
