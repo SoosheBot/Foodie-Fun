@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState } from "react";
-// import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 import Signup from '../images/Signup.png';
 import axios from 'axios';
@@ -95,93 +94,11 @@ const StyledSearchCuisines = styled.div`
     }
   }
 
-//   button {
-//     width: 30%;
-//     margin 4rem;
-//     padding: 1rem;
-//     background-color: #c45228;
-//     border-radius: 5px;
-//     color: white;
-//     font-weight: bold;
-//     border: 1px solid #e76e3c;
-
-//     &:hover {
-//       background-color: #e8964a;
-//       border: 1px solid #e76e3c;
-//       color: #181212;
-//       font-weight: bold;
-//     }
-//   }
 `;
-
-
-
-
-// export default function CuisineList() {
-//     const [data, setData] = useState([]);
-//     const [query, setQuery] = useState("");
-//     useEffect(() => {
-//       axiosWithAuth()
-//         .get('api/cuisines')
-//         .then(res => {
-//            console.log('cuisines', res)
-//           const cuisines = res.data.filter(
-//             cuisine =>
-//               cuisine.name
-//                 .toLowerCase()
-//                 .includes(query.toLowerCase())
-//           );
-//          setData(cuisines);
-//         });
-//     }, [query]);
-    
-//     const handleInputChange = event => {
-//       setQuery(event.target.value);
-//     };
-//     return (
-//      <section>
-//       <div className="cuisine">
-//        </div>   
-//     <h1>List of Cuisines</h1>  
-             
-//       <StyledSearchCuisines>   
-//        <form className="search">
-//           <input
-//             type="text"
-//             onChange={handleInputChange}
-//             value={query}
-//             name="name"
-//             tabIndex="0"
-//             className="prompt search-name"
-//             placeholder="search by Cuisine"
-//             autoComplete="off"
-//           />
-//         </form>
-//         </StyledSearchCuisines>
-
-//         <div className="review">
-//           {data.map(data => {
-//             return (
-//             <div key={data.id}>
-//             <h3>Name: {data.name}</h3>
-//             <h3>Rating: {data.item_rating} stars </h3>
-//             <p>Review: {data.item_review}</p>
-//             <h4>Last Visit: {data.date_visited}</h4>
-//             </div>
-//             )
-//           })}
-//         </div>  
-//       </section>
-//     );
-// }
-
-
-//testing
 
 function SearchCuisine() {
     const [loading, setLoading] = useState(true);
-    const [items, setItems] = useState([{ label: "Loading ...", value: "" }
-    ]);
+    const [items, setItems] = useState([]);
 
     useEffect(() => {
       axios
@@ -189,40 +106,26 @@ function SearchCuisine() {
        .then(res => {
         //console.log('cuisines', res)
         const cuisine = res.data
-        console.log(cuisine)
-        setItems(cuisine.map((item) =>
-            <option key={item.cuisine_name}>{item.cuisine_name}</option>
-        ));
-        console.log(items)
+        //console.log(cuisine)
+        setItems(cuisine)
+        //console.log(items)
         setLoading(false);
-        
-    const optionItems = cuisine.map((item) =>
-            <option key={item.cuisine_name}>{item.cuisine_name}</option>
-        );
-        console.log(optionItems)
       })
-      
     }, []);
 
-
+    console.log(items)
     return (
       <StyledSearchCuisines>   
-      
        <h1>Cuisine Search</h1>
        <form className="search">
          <select>
            <option>----Select----</option>
-           {/* {cuisine.map(({ label, value }) => (
-    <option key={value} value={value}>
-      {label}
-    </option>
-  ))} */}
-       
+            {items.map((item)=>(
+                <option key={item.id} value={item.cuisine_name}>{item.cuisine_name}</option>
+            ))}
          </select> 
-        </form>
-        
-     
-      </StyledSearchCuisines>
+       </form>
+     </StyledSearchCuisines>
     );
 }
 
