@@ -133,7 +133,7 @@ const SearchFilter = props => {
             
             <button>Search Menu items by Price</button>
             <button>Search Menu items by Rating</button>
-            <button>Date Late Visited</button>
+            <button>Date Last Visited</button>
             
 
               
