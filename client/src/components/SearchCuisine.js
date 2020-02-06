@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from "react";
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+// import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 import Signup from '../images/Signup.png';
 import axios from 'axios';
@@ -179,41 +179,46 @@ const StyledSearchCuisines = styled.div`
 //testing
 
 function SearchCuisine() {
-    const [loading, setLoading] = React.useState(true);
-    const [items, setItems] = useState([
-      { label: "Loading ...", value: "" }
+    const [loading, setLoading] = useState(true);
+    const [items, setItems] = useState([{ label: "Loading ...", value: "" }
     ]);
-    React.useEffect(() => {
+
+    useEffect(() => {
       axios
        .get('https://foodiefunbw.herokuapp.com/api/cuisines')
        .then(res => {
-        console.log('cuisines', res)
+        //console.log('cuisines', res)
         const cuisine = res.data
-    //    .catch
-        setItems(cuisine.map(({ id, cuisine_name }) => ({ label: id, value: cuisine_name })));
+        console.log(cuisine)
+        setItems(cuisine.map((item) =>
+            <option key={item.cuisine_name}>{item.cuisine_name}</option>
+        ));
+        console.log(items)
         setLoading(false);
-      }
-    
-       )
+        
+    const optionItems = cuisine.map((item) =>
+            <option key={item.cuisine_name}>{item.cuisine_name}</option>
+        );
+        console.log(optionItems)
+      })
+      
     }, []);
+
+
     return (
       <StyledSearchCuisines>   
       
        <h1>Cuisine Search</h1>
        <form className="search">
-         <select
-         disabled={loading}
-         value={items}> 
-
-          {/* <input
-            type="text"
-            //onChange={handleInputChange}
-            
-            className="prompt search-name"
-            placeholder="search by Cuisine"
-            autoComplete="off"
-          /> */}
-         </select>
+         <select>
+           <option>----Select----</option>
+           {/* {cuisine.map(({ label, value }) => (
+    <option key={value} value={value}>
+      {label}
+    </option>
+  ))} */}
+       
+         </select> 
         </form>
         
      
