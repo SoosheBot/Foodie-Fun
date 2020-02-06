@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
+import Reviews from './Reviews';
+
 import styled from "styled-components";
 import DashBoard from "../images/DashBoard.png";
 
@@ -84,14 +86,17 @@ const StyledDashBoard = styled.div`
     z-index: -2;
     display: flex;
 
-    .reviews {
+    .restaurants {
       z-index: front;
       display: flex;
-
-      img {
-        width: 10%;
-      }
+      flex-wrap:wrap;
+      padding: 20px;
     }
+
+    img {
+      width: 20%;
+    }
+
   }
 
   button {
@@ -112,20 +117,24 @@ const StyledDashBoard = styled.div`
   }
 `;
 
-const Dashboard = props => {
+const Dashboard = () => {
   const [restos, setRestos] = useState([]);
+  const userid = localStorage.getItem("created_by");
+  
 
   useEffect(() => {
     axiosWithAuth()
-      .get("api/restaurants")
+      .get(`api/users/${userid}/restaurants`)
       .then(res => {
+        console.log("setRestos firing", res.data)
         setRestos(res.data);
-        console.log("setRestos firing", res.data);
       })
       .catch(err => {
         console.log("get restos error", err);
       });
   }, []);
+
+  
 
   return (
     <StyledDashBoard>
@@ -147,7 +156,7 @@ const Dashboard = props => {
         {restos &&
           restos.map(resto => {
             return (
-              <div className="reviews">
+              <div className="restaurant">
                 <div key {...resto.id} resto={resto}>
                   <h3>Restaurant Name: {resto.name}</h3>
                   <figure>
@@ -155,70 +164,22 @@ const Dashboard = props => {
                   </figure>
                   <h3>Cuisine ID: {resto.cuisine_id}</h3>
                   <h3>Hours: {resto.hours_of_operation}</h3>
-                  <Link to="/add-review">Add Review</Link>
-                </div>
+                  {/* <Link to="/add-review">Add Review</Link> */} 
+                  <Reviews />
+                </div>  
               </div>
+              
             );
           })}
+          
+          
       </div>
-
+      <nav>
+      <Link to="/add-review">Add Review</Link>
       <Link to="/add-restaurant">Add a Restaurant</Link>
+      </nav>
     </StyledDashBoard>
   );
 };
-
-// const Dashboard = props => {
-//   const [restos, setRestos] = useState();
-
-//   useEffect(() => {
-//     axiosWithAuth()
-//       .get("api/reviews")
-//       .then(res => {
-//         setRestos(res.data);
-//         console.log("resto data = ", res.data);
-//       })
-//       .catch(err => {
-//         console.log("Server error", err);
-//       });
-//   }, []);
-
-//   return (
-//     <StyledDashBoard>
-//       <nav>
-//         <h1>Welcome User!</h1>
-//         <a
-//           href="https://www.google.com/"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//           alt="Homepage"
-//         >
-//           Home
-//         </a>
-//         <Link to="/login">Log Out</Link>
-//         <Link to="/">Search</Link>
-//       </nav>
-
-//       <div className="dashboard">
-//         {restos &&
-//           restos.map(resto => {
-//             return (
-//               <div className="reviews">
-//                 <div key {...resto.id} resto={resto}>
-//                   <h3>Menu Item: {resto.menu_item}</h3>
-//                   <figure>
-//                     <img src={resto.item_image_url} alt="Menu item" />
-//                   </figure>
-//                   <h3>Restaurant ID: {resto.restaurant_id}</h3>
-//                   <h3>{resto.item_review}</h3>
-//                 </div>
-//               </div>
-//             );
-//           })}
-//       </div>
-
-//       <Link to="/add-review">Add a Review</Link>
-//     </StyledDashBoard>
-//   );
-// };
 
 export default Dashboard;

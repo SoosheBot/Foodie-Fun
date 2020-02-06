@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+// import Select from "react-dropdown-select";
 
 import styled from "styled-components";
 import Signup from "../images/Signup.png";
@@ -93,6 +94,8 @@ const AddRestaurant = props => {
     created_by: localStorage.getItem("created_by")
   });
 
+  
+
   const handleChange = e => {
     setRestaurants({ ...restaurants, [e.target.name]: e.target.value });
   };
@@ -103,7 +106,7 @@ const AddRestaurant = props => {
       .post("api/restaurants", restaurants)
       .then(res => {
         setRestaurants({
-          ...restaurants, 
+          ...restaurants,
           name: "",
           cuisine_id: "",
           location: "",
@@ -131,7 +134,7 @@ const AddRestaurant = props => {
             value={restaurants.name}
             onChange={handleChange}
           />
-          <input
+          <input 
             type="text"
             className="cuisine"
             placeholder="Enter cuisine..."
