@@ -1,19 +1,12 @@
-
 // Search by:
 
-
-// $ of item 
-// most recent visit 
-// menu rating 
-// Restaurant rating 
-
-
+// Restaurant
 import React, { useEffect, useState } from "react";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from 'styled-components';
 import Signup from '../images/Signup.png';
 
-const StyledSearchReview = styled.div`
+const StyledSearchRestaurant = styled.div`
   background-image: url(${Signup});
   background-size: cover;
   display: block;
@@ -122,25 +115,21 @@ const StyledSearchReview = styled.div`
 //   }
 `;
 
-
-
-
-
 export default function ReviewsList() {
     const [data, setData] = useState([]);
     const [query, setQuery] = useState("");
     useEffect(() => {
       axiosWithAuth()
-        .get('api/reviews')
+        .get('api/restaurants')
         .then(res => {
-            //console.log('results', res)
-          const reviews = res.data.filter(
-            review =>
-              review.menu_item
+            console.log('results', res)
+          const restaurants = res.data.filter(
+            restaurant =>
+              restaurant.name
                 .toLowerCase()
                 .includes(query.toLowerCase())
           );
-         setData(reviews);
+         setData(restaurants);
         });
     }, [query]);
     
@@ -149,11 +138,11 @@ export default function ReviewsList() {
     };
     return (
      <section>
-      <div className="reviews">
+      <div className="restaurants">
        </div>   
-    <h1>List of Reviews</h1>  
+    <h1>List of Restaurants</h1>  
              
-      <StyledSearchReview>   
+      <StyledSearchRestaurant>   
        <form className="search">
           <input
             type="text"
@@ -162,20 +151,21 @@ export default function ReviewsList() {
             name="name"
             tabIndex="0"
             className="prompt search-name"
-            placeholder="search by Reviews"
+            placeholder="search by Restaurant"
             autoComplete="off"
           />
         </form>
-        </StyledSearchReview>
+        </StyledSearchRestaurant>
 
-        <div className="review">
+        <div className="restaurant">
           {data.map(data => {
             return (
             <div key={data.id}>
-            <h3>Name: {data.menu_item}</h3>
-            <h3>Rating: {data.item_rating} stars </h3>
-            <p>Review: {data.item_review}</p>
-            <h4>Last Visit: {data.date_visited}</h4>
+            <h3>Name: {data.name}</h3>
+            <h3>Cuisine: {data.cuisine_name}</h3>
+            <h4>Location: {data.location}</h4>
+            <h4>Hours: {data.hours_of_operation}</h4>
+            <h4>Restaurant Image: {data.img_url}</h4>
             </div>
             )
           })}

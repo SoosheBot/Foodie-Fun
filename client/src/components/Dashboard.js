@@ -175,7 +175,7 @@ const Dashboard = () => {
     <StyledDashBoard>
       <nav>
         <a
-          href="https://www.google.com/"
+          href="https://bw-foodie-fun2.github.io/UI/index.html"
           target="_blank"
           rel="noopener noreferrer"
           alt="Homepage"
@@ -183,7 +183,7 @@ const Dashboard = () => {
           Home
         </a>
         <Link to="/login">Log Out</Link>
-        <Link to="/">Search</Link>
+        <Link to="/SearchFilter">Search</Link>
       </nav>
 
       <div className="dashboard"> 
