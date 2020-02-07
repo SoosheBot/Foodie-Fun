@@ -213,7 +213,7 @@ const Dashboard = () => {
       </div>
 
       
-      <div classname='footer-links'>
+      <div className='footer-links'>
         <nav>
         <Link to="/add-review">Add Review</Link>
         <Link to="/add-restaurant">Add a Restaurant</Link>
