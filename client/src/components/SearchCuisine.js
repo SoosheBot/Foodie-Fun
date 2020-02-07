@@ -100,7 +100,7 @@ function SearchCuisine() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
 //     const [data, setData] = useState([]);
-//     const [query, setQuery] = useState("");
+    const [query, setQuery] = useState("");
     useEffect(() => {
       axios
        .get('https://foodiefunbw.herokuapp.com/api/cuisines')
@@ -115,6 +115,10 @@ function SearchCuisine() {
     }, []);
     console.log(items)
 
+    const handleInputChange = event => {
+       setQuery(event.target.value);
+       };
+
 
     return (
       <StyledSearchCuisines>   
@@ -126,6 +130,16 @@ function SearchCuisine() {
                 <option key={item.id} value={item.cuisine_name}>{item.cuisine_name}</option>
             ))}
          </select> 
+         <input
+            type="text"
+            onChange={handleInputChange}
+            value={query}
+            name="name"
+            tabIndex="0"
+            className="prompt search-name"
+            placeholder="search by Cuisine"
+            autoComplete="off"
+          />
        </form>
      </StyledSearchCuisines>
     );
