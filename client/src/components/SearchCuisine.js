@@ -99,7 +99,8 @@ const StyledSearchCuisines = styled.div`
 function SearchCuisine() {
     const [loading, setLoading] = useState(true);
     const [items, setItems] = useState([]);
-
+//     const [data, setData] = useState([]);
+//     const [query, setQuery] = useState("");
     useEffect(() => {
       axios
        .get('https://foodiefunbw.herokuapp.com/api/cuisines')
@@ -112,8 +113,9 @@ function SearchCuisine() {
         setLoading(false);
       })
     }, []);
-
     console.log(items)
+
+
     return (
       <StyledSearchCuisines>   
        <h1>Cuisine Search</h1>
@@ -130,3 +132,63 @@ function SearchCuisine() {
 }
 
   export default SearchCuisine;
+
+
+//   export default function ReviewsList() {
+//     const [data, setData] = useState([]);
+//     const [query, setQuery] = useState("");
+//     useEffect(() => {
+//       axiosWithAuth()
+//         .get('api/restaurants')
+//         .then(res => {
+//           console.log('results', res)
+//           const restaurants = res.data.filter(
+//             restaurant =>
+//             restaurant.cuisine_name
+//             .toLowerCase()
+//             .includes(query.toLowerCase())
+//           );
+//          setData(restaurants);
+//         });
+//     }, [query]);
+    
+//     const handleInputChange = event => {
+//       setQuery(event.target.value);
+//     };
+//     return (
+//      <section>
+//       <div className="restaurants">
+//        </div>   
+//     <h1>List of Restaurants</h1>  
+             
+//       <StyledSearchRestaurant>   
+//        <form className="search">
+//           <input
+//             type="text"
+//             onChange={handleInputChange}
+//             value={query}
+//             name="name"
+//             tabIndex="0"
+//             className="prompt search-name"
+//             placeholder="search by Cuisine"
+//             autoComplete="off"
+//           />
+//         </form>
+//         </StyledSearchRestaurant>
+
+//         <div className="restaurant">
+//           {data.map(data => {
+//             return (
+//             <div key={data.id}>
+//             <h3>Name: {data.name}</h3>
+//             <h3>Cuisine: {data.cuisine_name}</h3>
+//             <h4>Location: {data.location}</h4>
+//             <h4>Hours: {data.hours_of_operation}</h4>
+//             <h4>Restaurant Image: {data.img_url}</h4>
+//             </div>
+//             )
+//           })}
+//         </div>  
+//       </section>
+//     );
+// }
