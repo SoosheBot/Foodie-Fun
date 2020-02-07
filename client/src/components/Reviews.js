@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import EditReview from "./EditReview";
 
-// import EditReview from './EditReview';
+import EditReview from "./EditReview";
+import DeleteReview from "./DeleteReview";
 
 const Reviews = props => {
   const [myReviews, setMyReviews] = useState([]);
@@ -33,9 +33,7 @@ const Reviews = props => {
               </div>
               <div className="edit-reviews">
                 <EditReview myreview={myreview}/>
-                {/* <button type="submit" className="delete-button">
-                  Delete
-                </button> */}
+                <DeleteReview myreview={myreview}/>
               </div>
             </div>
           );

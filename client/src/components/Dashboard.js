@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 import Reviews from './Reviews';
-import EditReview from './EditReview';
-
 
 import styled from "styled-components";
 import DashBoard from "../images/DashBoard.png";

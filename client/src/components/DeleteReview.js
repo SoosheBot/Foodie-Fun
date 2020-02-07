@@ -7,9 +7,8 @@ const DeleteReview = (props) => {
     axiosWithAuth()
     .delete(`api/reviews/${props.myreview.id}`)
     .then(res => {
-      console.log(res.data);
-      // props.setMyReviews(res.data)
-      // props.history.push("/dashboard")
+      console.log('res.data', res.data);
+      window.location.reload(false);
     })
     .catch(err => {
       console.log(err);
@@ -19,7 +18,7 @@ const DeleteReview = (props) => {
   return (
     <div className="delete-button-wrapper">
       <button type='submit' className="delete-button" onClick={handleDelete}>
-        Delete
+        Delete Review
       </button>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const initialValue = {
@@ -19,10 +19,7 @@ const EditReview = props => {
     axiosWithAuth()
     .put(`api/reviews/${props.myreview.id}`, updates)
       .then(res => {
-        
         console.log('res.data', res.data)
-        // setUpdates(updates)
-        // props.history.push("/dashboard");
         window.location.reload(false);
       })
       .catch(err => {
