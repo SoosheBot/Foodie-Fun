@@ -20,7 +20,7 @@ const StyledDashBoard = styled.div`
 
   nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
 
     a {
@@ -82,28 +82,35 @@ const StyledDashBoard = styled.div`
 
   .dashboard {
     margin-top: 10%;
-    width: 100%;
+    height: 60%;
     background-color: black;
     opacity: 0.8;
     z-index: -2;
     display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-content:center;
+  
 
     .restaurants {
       z-index: front;
       display: flex;
       flex-wrap:wrap;
-      padding: 20px;
+      // padding: 20px;
     }
 
     img {
-      width: 20%;
+      width: 30%;
     }
 
   }
 
+ 
+
   button {
     width: 50%;
-    padding: 1rem;
+    padding: 0.5rem;
+    margin-top:0.2rem;
     background-color: #c45228;
     border-radius: 5px;
     color: white;
@@ -116,6 +123,33 @@ const StyledDashBoard = styled.div`
       color: #181212;
       font-weight: bold;
     }
+
+    nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+
+    a {
+      width: 10%;
+      padding: 2%;
+      text-decoration: none;
+      font-size: 1.8vw;
+      font-weight: bold;
+      text-align: center;
+      &:hover {
+        color: #c45228;
+      }
+      @media (max-width: 500px) {
+        font-size: 0.5rem;
+        display: flex;
+        flex-direction: column;
+      }
+      @media (max-width: 825px) {
+        font-size: 1rem;
+      }
+    }
+  }
   }
 `;
 
@@ -140,7 +174,6 @@ const Dashboard = () => {
   return (
     <StyledDashBoard>
       <nav>
-        <h1>Welcome User!</h1>
         <a
           href="https://www.google.com/"
           target="_blank"
@@ -172,15 +205,20 @@ const Dashboard = () => {
               
             );
           })}
-        <Reviews />
+          <div className='reviews'>
+          <Reviews />
+          </div>
+        
         
       </div>
 
       
-      <nav>
-      <Link to="/add-review">Add Review</Link>
-      <Link to="/add-restaurant">Add a Restaurant</Link>
+      <div classname='footer-links'>
+        <nav>
+        <Link to="/add-review">Add Review</Link>
+        <Link to="/add-restaurant">Add a Restaurant</Link>
       </nav>
+      </div>
     </StyledDashBoard>
   );
 };
