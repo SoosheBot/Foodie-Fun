@@ -50,7 +50,7 @@ const StyledAddReview = styled.div`
       margin: 2rem auto;
     }
 
-    .submit {
+    .button {
       width: 80%;
       padding: 0.5rem 1rem;
       background-color: #c45228;
@@ -97,6 +97,7 @@ const AddReview = props => {
     item_image_url:'',
     date_visited: ""
   });
+  
 
   // console.log('review', review);
 

@@ -1,7 +1,10 @@
-import React from "react";
+// import React, { useState, useEffect } from "react";
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
+// import { axiosWithAuth } from "./utils/axiosWithAuth";
 import PrivateRoute from "./utils/PrivateRoute";
+
 import AddReview from "./components/AddReview";
 import SearchReview from './components/SearchReview';
 import SearchFilter from './components/SearchFilter';
@@ -11,15 +14,33 @@ import SignUp from "./components/SignUp";
 import Dashboard from "./components/Dashboard";
 import AddRestaurant from './components/AddRestaurant';
 import SearchCuisine from './components/SearchCuisine';
+import Reviews from './components/Reviews';
+import EditReview from "./components/EditReview";
 
 import "./App.css";
 
-function App() {
+function App(props) {
+
+  // const deleteItem = id => {
+  //   axiosWithAuth()
+  //     .delete(`/api/movies/${id}`)
+  //     .then(response => {
+  //       console.log("delete", response.data)
+  //       setItems(response.data);
+  //       // props.history.push("/");
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+
+
   return (
     <div className="App">
       <Router>
         <Switch>
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/reviews" component={Reviews}/>
+          <Route path="/edit-review/:id" component={EditReview}/>
           <PrivateRoute path='/SearchCuisine' component={SearchCuisine}/>
           <PrivateRoute path='/SearchReview' component={SearchReview} />
           <PrivateRoute path='/SearchFilter' component={SearchFilter} />
