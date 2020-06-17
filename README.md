@@ -1,20 +1,6 @@
-<<<<<<< HEAD
+
 # Front-End Documentation
+## About
+As an avid "Foodie", you eat out alot. So much so, in fact, that you have a hard time remembering the details from your previous visits - What did you order? How long did you have to wait to be seated? Were the waistaff friendly and helpful, or rude and dismissive? Was the "mild" Panang Curry really mild, or did it burn the tongue out of your mouth? You could lug a notebook and take detailed notes each visit - taking your attention away from why you came in the first place (to experience the meal), or you can leverage FoodieFun and easily record and access all the important details, freeing you up to focus exclusively on the meal. FoodieFun is a feature-rich "Foodie-Focused" journaling app designed with the avid "Foodie" in mind. With FoodieFun, you can quickly find out all the details you need to make a decision on where to dine:
 
-## Design Details
-- [Foodie Fun Trello](https://trello.com/b/rHE7FNzJ/foodiefun)
-- [Foodie Fun PVD](https://www.notion.so/PVD-Foodie-Fun-2-7e0829ebab294ed6bc92174202bb82d7)
-- [Figma inc. MVP & Pitch](https://www.figma.com/file/A7hFua2tl6OmWGl5XzHyWi/FoodieFun-Devs?node-id=70%3A0)
-- [React 1 Build Week Rubric](https://www.notion.so/Web-Unit-2-b9f9c21279964ea4b923ca6252f15421)
-- [React 2 Build Week Rubric](https://www.notion.so/Web-Unit-3-49465ea3a66440c89b593452e60ba8f8)
-=======
-# Front-End
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-installed react-router-dom
-installed axios
-installed material-ui/core
-installed react-hook-form
-installed yup
->>>>>>> 0a4c2aba628b933cde4fa435f8f35ca29ca675f3
+*Find the deployed website here:* https://foodie-fun-2.herokuapp.com/
