@@ -186,7 +186,7 @@ const Dashboard = () => {
         <Link to="/SearchFilter">Search</Link>
       </nav>
     
-    <p>Welcome! To get started, please add a review or a restaurant.</p>
+    <h2>Welcome! To get started, please add a review or a restaurant.</h2>
 
       <div className="dashboard"> 
       {restos &&
